@@ -1,0 +1,13 @@
+.footer {
+    background-color: #000;
+}
+
+.footer__container {
+    padding: 20px 0;
+    max-width: 1300px;
+    margin: 0 auto; 
+}
+
+.logo {
+    width: 268px;
+}

@@ -1,0 +1,36 @@
+.container {
+    width: 62px;
+    height: 62px;
+    background: linear-gradient(114.93deg, #919191 5.11%, #596059 94%);
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s linear;
+    text-decoration: none;
+    position: relative;
+    z-index: 4;
+    margin-right: 10px;
+}
+
+.container:hover {
+    box-shadow: 0px 0px 40px #7f917f;
+}
+
+.container:active {
+    transform: scale(.95);
+}
+
+
+.text {
+    text-align: center;
+    width: 70%;
+    padding-top: 3px;
+    border-top: 2px dashed rgb(54, 48, 48);
+    font-weight: 700;
+    font-size: 20px;
+    color: #f0eeee;
+}
