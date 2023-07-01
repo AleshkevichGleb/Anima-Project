@@ -1,15 +1,10 @@
-.prewiew {
-    margin-bottom: 50px;
-    width: 100%;
-    min-height: 100vh;
-    background-image: url("../../assets/images/home-bcImage.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+.slider {
+    max-width: 1000px;
+    height: 575px;
 }
 
 .sliderDots {
-    background-color: rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: rgba(232, 231, 231, 0.7);
 }
 
 .dots {
@@ -17,4 +12,10 @@
     display: block;
     width: 30px;
     height: 30px;
+}
+
+.image {
+    width: 1000px;
+    /* transform: translate(0, calc(-33.3333% - 0px)); */
+    height: 600px;
 }

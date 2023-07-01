@@ -1,4 +1,5 @@
 import Title from "../../common/title/Title";
+import Prewiew from "../../components/Preview/Preview";
 import Slider from "../../components/Slider/Slider";
 import styles from "./Home.module.css"
 
@@ -6,7 +7,7 @@ const Home = () => {
     return (
         <div className="main">
             <div className={styles.home}>
-                <Slider/>
+                <Prewiew/>
                 <div className={styles.home__container}>
                     <Title
                         addStyles1={styles.titleContainer}

@@ -1,0 +1,85 @@
+.prewiew {
+    padding-top: 120px;
+    margin-bottom: 50px;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("../../assets/images/home-bcImage.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.prewiew__container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.slider__container {
+    display: flex;
+    justify-content: end;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-size: 50px;
+}
+
+.supTitle {
+    text-transform: uppercase;
+    color: #9C9C9C;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    width: 150px;
+}
+
+.supTitle::after {
+    position: absolute;
+    content: '';
+    background-color: #9C9C9C;
+    width: 82px;
+    height: .5%;
+    font-weight: 100;
+    right: -80px;
+    top: 6px;
+}
+
+.add__container {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: calc(50% - 150px);
+    width: 47%;
+    display: flex;
+    justify-content: end;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.add {
+    width: 643px;   
+    height: 381px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.buttons__container {
+    display: flex;
+    gap: 15px;
+}
+
+.button{
+    width: 288px;
+    height: 68px;
+    border-radius: 0 !important;
+}
+
+.button_black {
+    border-radius: 0 !important;
+    width: 288px;
+    height: 68px;
+    background-color: #1e1d1d !important;
+}
