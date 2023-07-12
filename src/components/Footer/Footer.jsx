@@ -4,6 +4,7 @@ import MyInput from "../../common/input/MyInput";
 import Title from "../../common/title/Title";
 import styles from "./Footer.module.css";
 import FooterInfo from "./FooterInfo/FooterInfo";
+import FooterWeather from "./FooterInfo/FooterWeather/FooterWeather";
 
 const Footer = () => {
     const [personInfo, setPersonInfo] = useState({
@@ -68,6 +69,8 @@ const Footer = () => {
               </div>
             </form>
             <FooterInfo/>
+            <div className={styles.hr}></div>
+            <span className={styles.footer__agree}>674 Gonzales Drive.   Washington, PA 15301</span>
         </footer>
     )
 }

@@ -32,8 +32,11 @@
         font-size: 30px;
         
     }
+}
 
-    .title1 {
-
+@media (max-width: 490px) {
+    .titleBlock {
+        font-size: 25px;
     }
+
 }

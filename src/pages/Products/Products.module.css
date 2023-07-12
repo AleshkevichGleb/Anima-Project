@@ -26,3 +26,22 @@
     top: -10px;
     left: 0;
 }
+
+.searchInput__block {
+    width: 300px;
+    background-color: #000;
+}
+
+.searchInput {
+    width: 300px;
+    outline: none;
+    height: 50px;
+    padding: 10px 15px;
+    border: 1px solid #2e2e2e;
+    border-radius:8px;
+    font-size: 18px;
+}
+
+.sort {
+    margin-bottom: 30px;
+}

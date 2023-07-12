@@ -16,7 +16,22 @@
 .accordion__container {
     display: flex;
     align-items: center;
-    gap: 20px;
-    /* justify-content: center; */
 }
 
+@media(max-width: 1100px) {
+    .accordion__container {
+        flex-direction: column  ;
+    }
+}
+
+
+@media(max-width: 510px) {
+    .accordion__container {
+        gap: 40px;
+    }
+
+    .image {
+        display: none;
+    }
+
+}

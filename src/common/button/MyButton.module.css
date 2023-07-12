@@ -9,7 +9,9 @@
     font-family: 'Raleway', sans-serif;
     transition: .2s linear;
     border: none;
+    outline: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .button:hover {

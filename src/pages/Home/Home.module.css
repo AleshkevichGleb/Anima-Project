@@ -2,24 +2,3 @@
     padding: 0 0 50px 0;
 }
 
-.home__container {
-    max-width: 1300px;
-    margin: 0 auto;
-}
-
-.titleContainer {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 480px;
-}
-
-.titleContainer::before {
-    position: absolute;
-    content: '';
-    width: 20%;
-    height: 1px;
-    background-color: #28553F;
-    top: -10px;
-    left: 0;
-}

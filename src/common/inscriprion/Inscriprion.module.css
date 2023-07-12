@@ -1,0 +1,11 @@
+.arrow {
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+    
+}
+
+.arrow__text {
+    color:#282A30;
+    /* font-size: 21px; */
+}

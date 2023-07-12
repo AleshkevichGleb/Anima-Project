@@ -2,7 +2,7 @@ import styles from "./Accordion.module.css";
 import arrowImage from "../../../assets/images/arrow.svg"
 const Accordion = ({accordionArr, setAccordionArr, flag}) => {
 
-    const handleLeftAccordion = (arr, setArr, id) => {
+    const handleAccordion = (arr, setArr, id) => {
         const newState = arr.map(el => {
             if(el.id === id) {
                 return {...el, isActive: !el.isActive}
@@ -19,7 +19,7 @@ const Accordion = ({accordionArr, setAccordionArr, flag}) => {
         <div className={styles.accordion}>
             {accordionArr.map((post) => 
                 <div 
-                    onClick={() => handleLeftAccordion(accordionArr, setAccordionArr, post.id)} 
+                    onClick={() => handleAccordion(accordionArr, setAccordionArr, post.id)} 
                     className={styles.accordionItem} 
                     key = {post.id}
                 >

@@ -6,11 +6,11 @@ import { useState } from "react";
 import FAQMainImage from "../../assets/images/FAQMain.png"
 import Accordion from "./Accordion/Accordion";
 import UnderHeader from "../../common/underHeader/UnderHeader";
+import CheckMark from "../../components/CheckMark/CheckMark";
 
 const FAQPage = () => {
     const [accordionLeft, setAccordionLeft] = useState([]);
     const [accordionRight, setAccordionRight] = useState([]);
-
     const breakArrayOnTwo = (array) => {
         const arr1 = array.filter((el, i) => i + 1 < accordionData.length/2+1)
         const arr2 = array.filter((el, i) => i + 1 > accordionData.length/2)
@@ -19,6 +19,7 @@ const FAQPage = () => {
     }
 
     useEffect(() => {
+
         setAccordionLeft(breakArrayOnTwo(accordionData)[0])
         setAccordionRight(breakArrayOnTwo(accordionData)[1])
     }, [])
@@ -33,13 +34,14 @@ const FAQPage = () => {
                         accordionArr={accordionLeft} 
                         setAccordionArr={setAccordionLeft}
                     />
-                    <img src = {FAQMainImage}/>
+                    <img className = {styles.image} src = {FAQMainImage}/>
                     <Accordion 
                         accordionArr={accordionRight} 
                         setAccordionArr={setAccordionRight}
                         flag = 'right'
                     />
                 </div>
+                <CheckMark/>
             </div>
         </div>
       
