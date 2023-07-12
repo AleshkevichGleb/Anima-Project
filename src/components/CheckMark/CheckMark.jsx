@@ -6,7 +6,7 @@ const CheckMark = () => {
         <div className={styles.block}>
             {checkMark.map(item => 
                 <div 
-                    key={item.key}
+                    key={item.id}
                     className={styles.block__item}
                 >
                     <div className={styles.block__title}>

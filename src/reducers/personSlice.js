@@ -10,11 +10,13 @@ const personSlice = createSlice({
         street: '',
         house: '',
         flat: '',
+        agreement: false,
     },
     reducers: {
         setPerson: (state, action) => {
-            const {id, value} = action.payload;
-            state[id] = value;
+            const {id, value, checked} = action.payload;
+            if(id === 'agreement') state[id] = checked;
+            else state[id] = value;
         }
     },
 })
