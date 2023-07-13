@@ -16,7 +16,8 @@ import UnsortProducts from "./UnsortedProducts/UnsortedProducts";
 const Products = () => {
     const {products, searchValue, searchProducts, currentPage, size, sliceProducts} = useSelector(state => state.products);
     const [filter, setFilter] = useState({sort: '', query: ''});
-    // const sortedAndSearchedProducts = useProducts(products, filter.sort, filter.query)
+    const sortedAndSearchedProducts = useProducts(products, filter.sort, filter.query)
+    console.log(sortedAndSearchedProducts);
     const dispatch = useDispatch();
     let subArray = [];
     for(let i = 0; i < Math.ceil(products.length / size); i++)  {
@@ -28,7 +29,7 @@ const Products = () => {
         dispatch(setSearchValue(filter))
     }, [filter])
 
-
+    console.log(searchProducts);
     return (
         <>
         <UnderHeader/>
@@ -44,7 +45,7 @@ const Products = () => {
                         <input
                             className={styles.searchInput}
                             placeholder="Поиск"
-                            value = {searchValue}
+                            value = {filter.query}
                             onChange={e => setFilter({...filter, query: e.target.value})}
                         />
                         <MySelect 
@@ -60,9 +61,9 @@ const Products = () => {
                         />
                     </div>
                     {
-                        searchProducts.length 
-                            ? <SortProducts searchProducts = {searchProducts}/>
-                            : <UnsortProducts products={products}/> 
+                        // searchProducts.length 
+                            <SortProducts searchProducts = {sortedAndSearchedProducts}/>
+                            // : <UnsortProducts products={searchProducts}/> 
                             
                     }
                 </div>

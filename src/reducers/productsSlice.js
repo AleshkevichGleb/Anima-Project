@@ -54,7 +54,6 @@ const productsSlice = createSlice({
 
         increase_price: (state, action) => {
             const {id} = action.payload;
-            console.log(id);
             const product = findProduct(state, id);
             product.cartCount += 1;
             product.cartPrice += product.price;
@@ -97,7 +96,6 @@ const productsSlice = createSlice({
 
         setSearchValue: (state, action) => {
             state.filter = action.payload;
-
             
             let newState = [];
             
@@ -110,6 +108,8 @@ const productsSlice = createSlice({
                     state.searchProducts = state.products.sort((a,b) => a[state.filter.sort].localeCompare(b[state.filter.sort]))   
                 }
             }
+
+            state.searchProducts = newState;
 
             if(state.filter.query.length) {
                 const words = state.filter.query.split(' ');

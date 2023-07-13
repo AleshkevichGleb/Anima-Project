@@ -3,7 +3,11 @@ import { useMemo } from "react"
 export const useSortedProducts = (products, sort) => {
     const sortedProducts = useMemo(() => {
         if(sort.length) {
-            return [...products].sort((a,b) => a[sort].localeCompare(b[sort]))
+            if(sort === 'price' )  {
+                return [...products].sort((a,b) => a-b) 
+            } else {
+                return [...products].sort((a,b) => a[sort].localeCompare(b[sort]))
+            }
         }
 
         return products;

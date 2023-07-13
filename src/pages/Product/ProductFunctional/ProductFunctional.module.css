@@ -172,6 +172,7 @@
     .product__accordionText  {
         width: 300px;
     }
+
     
 }
 
@@ -195,9 +196,20 @@
         justify-content: space-between;
     }
     
+    .cartCount {
+        width: 40px;
+        height: 40px;
+        top: -85px;
+        font-size: 20px;
+        left: 140px;
+    }
 }
 
 @media(max-width: 460px) {
+    .product__functional {
+       padding: 0px;
+    }
+
     .priceBlock { 
         gap: 20px;
     }
@@ -215,10 +227,15 @@
         height: 40px;
         font-size: 14px;
     }
+    .product__accordion__item_active {
+        min-height: 300px;
+    }
 }
 
 @media(max-width: 395px) {
-
+    .product__accordion__item_active {
+        min-height: 330px;
+    }
     .priceBlock__price {
         font-size: 24px;
     }

@@ -63,12 +63,16 @@ const Basket = () => {
                                 </div>
                             </div>
                         )}  
-                        <MyButton 
-                            addStyles={styles.button}
-                            onClick={() => navigate('/form')}
-                        >
-                            Оформить заказ
-                        </MyButton>
+                        <div className={styles.finalPriceBlock}>
+                            <span>Сумма вашего заказа: <span className={styles.finalPrice}>3323 ₽</span></span>
+                            <span>Количество товаров: <span className={styles.finalPrice}>3</span></span>
+                            <MyButton 
+                                addStyles={styles.button}
+                                onClick={() => navigate('/form')}
+                                >
+                                    Оформить заказ
+                            </MyButton>
+                        </div>
                       </div>
                     : <EmptyBasket/>
                 }

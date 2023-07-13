@@ -62,7 +62,6 @@
 
 .product__price {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    /* font-weight: 700; */
     font-size: 22px;
 }
 
@@ -99,11 +98,33 @@
 }
 
 .button {
-    margin-top: 50px;
+    margin-top: 20px;
     width: 230px;
     height: 52px;
     font-weight: 700;
 }
+
+.finalPriceBlock {
+    margin-top: 40px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    min-height: 60px;
+    font-size: 20px;
+    background: linear-gradient(90deg, #d6d4d4 0%, #e1dcdc 100%);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.finalPrice {
+    font-size: 22px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 @media(max-width: 1310px){
     .basket__container {
         margin: 0 10px;
