@@ -10,6 +10,7 @@ import Slider from "../../components/Slider/Slider";
 import image from "../../assets/images/countertops.jpg";
 import arrowImage from "../../assets/images/arrow.svg"
 import ProductFunctional from "./ProductFunctional/ProductFunctional";
+import ProductComments from "./ProductComments/ProductComments";
 
 const Product = () => {
     const {products} = useSelector(state => state.products);
@@ -27,6 +28,7 @@ const Product = () => {
         const {src, alt} = e.target;
         setMainImage({src: src, alt: alt});
     }
+
     return (
         <>
             <UnderHeader/>
@@ -57,7 +59,7 @@ const Product = () => {
                         <span className={styles.product__description__text}>{product.description}</span>
                     </div>
                     <CheckMark/>
-
+                    <ProductComments id = {id}/>
                 </div>
             </div>
         </>

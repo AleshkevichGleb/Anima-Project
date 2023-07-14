@@ -3,7 +3,7 @@ import buyImage from "../../../assets/images/buy.svg"
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const BasketCount = () => {
+const BasketCount = ({onClick}) => {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
@@ -11,7 +11,7 @@ const BasketCount = () => {
     }, [])
 
     return (
-        <Link to = "/basket" className={styles.container}>
+        <Link to = "/basket" className={styles.container} onClick={onClick}>
             <img className = {styles.image} src = {buyImage} alt = ""/>
             <span className={styles.text}>{count}</span>
         </Link>

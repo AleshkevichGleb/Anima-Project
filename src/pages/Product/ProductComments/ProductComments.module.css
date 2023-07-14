@@ -1,0 +1,52 @@
+.commentsBlock {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.button {
+    width: 257px;
+    height: 49px;
+}
+
+.comments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comments__container  {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+    border: 1px solid black;
+}
+
+.comment__titleContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment__name {
+    font-size: 20px;
+}
+
+.comment__email {
+    font-size: 20px;
+}
+
+.comment__comment  {
+    font-size: 18px;
+}

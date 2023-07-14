@@ -1,5 +1,6 @@
 import {takeEvery, call, put} from "redux-saga/effects"
 import { getWeatherFailed, getWeatherSuccess } from "./weatherSlice";
+import { getCommentsSuccess } from "./commentsSlice";
 
 const getGeoLoction = () => {
     return new Promise((resolve, rejected) => {
@@ -33,8 +34,23 @@ function* workGetWeatherFetch() {
     }
 }
 
+// function* workGetCommentsFetch () {
+//     try{
+//         const response = yield call((id = 3) => 
+//             fetch(`https://jsonplaceher.typicode.com/posts/${id}/comments`)
+//         )
+//         const data = yield response.json();
+//         yield console.log(data);
+//         yield put(getCommentsSuccess(data))
+//     } catch(error) {
+//         yield console.log(error);
+//         yield put(getWeatherFailed(error.message));
+//     }
+// }
+
 function* rootSaga() {
-    yield takeEvery('weather/getWeatherFetch', workGetWeatherFetch)
+    yield takeEvery('weather/getWeatherFetch', workGetWeatherFetch);
+    // yield takeEvery('comments/getCommentsFetch', workGetCommentsFetch);
 }
 
 export default rootSaga;

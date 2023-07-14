@@ -14,14 +14,18 @@ const Header = () => {
         <div className={styles.header}>
             <div className={styles.header__container}>
                 <Menu 
-                    onClick = {() => setIsActiveMenu(!isActiveMenu)} 
+                    onClick = {(e) => {
+                        setIsActiveMenu(!isActiveMenu);
+                        e.stopPropagation ();
+                    }} 
                     isActiveMenu = {isActiveMenu}
                 />
-                <Logo/>
+                <Logo onClick = {() => setIsActiveMenu(false)}/>
                 <div className={isActiveMenu ? styles.menu__active : styles.menu}>
                     <nav className={styles.navbar}>
                         {navLinks.map(link => 
                             <Link 
+                                onClick={() => (setIsActiveMenu(false))}
                                 key = {link.path} 
                                 className = {styles.link} 
                                 to = {link.path}
@@ -29,13 +33,13 @@ const Header = () => {
                                 {link.title}
                             </Link>    
                         )}
-                        <div className={styles.phone}>
+                        <div className={styles.phone} onClick={(e) => e.stopPropagation()}>
                             <img src={phoneImage} alt="phone" />
                             <span>+7(499)258-625-33</span>
                         </div>
                     </nav>
                 </div>
-                <BasketCount/>
+                <BasketCount onClick = {() => setIsActiveMenu(false)}/>
             </div>
         </div>
     )
