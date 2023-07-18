@@ -1,4 +1,9 @@
 import image from "../assets/images/product.png";
+import imageGal1 from "../assets/images/gallery1.jpg";
+import imageGal2 from "../assets/images/gallery2.jpg";
+import imageGal3 from "../assets/images/gallery3.jpg";
+import imageGal4 from "../assets/images/gallery4.jpg";
+
 
 export const productState = [
     {
@@ -22,6 +27,14 @@ export const productState = [
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
             {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
         ],
+        gallery: [
+            {id: 1, image: image},
+            {id: 2, image: imageGal1},
+            {id: 3, image: imageGal2},
+            {id: 4, image: imageGal3},
+            {id: 5, image: imageGal4},
+        ],
+        color: 'Белый',
     },
     {
         id: 2,
@@ -44,11 +57,19 @@ export const productState = [
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
             {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
         ],
+        gallery: [
+            {id: 1, image: image},
+            {id: 2, image: imageGal1},
+            {id: 3, image: imageGal2},
+            {id: 4, image: imageGal3},
+            {id: 5, image: imageGal4},
+        ],
+        color: 'Черный',
     },
     {
         id: 3,
         inStock: true,
-        type: 'Kratki',
+        type: 'Home',
         title: 'Скульптура из камня',
         description: 'Меценат лаореет великая жизнь свершилась, надо вестибюль чистый поставить. Mauris sollicitudin congue nisl, congue pellentesque Fear pellentesque id. ',
         price: 17490,
@@ -66,6 +87,14 @@ export const productState = [
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
             {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
         ],
+        gallery: [
+            {id: 1, image: image},
+            {id: 2, image: imageGal1},
+            {id: 3, image: imageGal2},
+            {id: 4, image: imageGal3},
+            {id: 5, image: imageGal4},
+        ],
+        color: 'Белый',
     },
     {
         id: 4,
@@ -88,12 +117,20 @@ export const productState = [
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
             {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
         ],
+        gallery: [
+            {id: 1, image: image},
+            {id: 2, image: imageGal1},
+            {id: 3, image: imageGal2},
+            {id: 4, image: imageGal3},
+            {id: 5, image: imageGal4},
+        ],
+        color: 'Синий',
     },
 
     {
         id: 5,
         inStock: true,
-        type: 'Kratki',
+        type: 'Home',
         title: 'Каминная раковина накладная',
         description: 'Меценат лаореет великая жизнь свершилась, надо вестибюль чистый поставить. Mauris sollicitudin congue nisl, congue pellentesque Fear pellentesque id. ',
         price: 16190,
@@ -111,12 +148,20 @@ export const productState = [
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
             {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
         ],
+        gallery: [
+            {id: 1, image: image},
+            {id: 2, image: imageGal1},
+            {id: 3, image: imageGal2},
+            {id: 4, image: imageGal3},
+            {id: 5, image: imageGal4},
+        ],
+        color: 'Фиолетовый',
     },
 
     {
         id: 6,
         inStock: true,
-        type: 'Мама',
+        type: 'Lapki',
         title: 'Мойка из камня',
         description: 'Меценат лаореет великая жизнь свершилась, надо вестибюль чистый поставить. Mauris sollicitudin congue nisl, congue pellentesque Fear pellentesque id. ',
         price: 16490,
@@ -134,6 +179,45 @@ export const productState = [
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
             {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
         ],
+        gallery: [
+            {id: 1, image: image},
+            {id: 2, image: imageGal1},
+            {id: 3, image: imageGal2},
+            {id: 4, image: imageGal3},
+            {id: 5, image: imageGal4},
+        ],
+        color: 'Белый',
+    },
+
+    {
+        id: 7,
+        inStock: true,
+        type: 'Home',
+        title: 'Мойка из камня',
+        description: 'Меценат лаореет великая жизнь свершилась, надо вестибюль чистый поставить. Mauris sollicitudin congue nisl, congue pellentesque Fear pellentesque id. ',
+        price: 16490,
+        isSale: true,
+        salePrice: 583,
+        image: {
+            src: image,
+            alt:'product',
+        },
+        cartCount: 0,
+        cartPrice: 0,
+        specifications: [
+            {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
+            {id: 2, title: "Изделие", text: "38 мм"},
+            {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
+            {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
+        ],
+        gallery: [
+            {id: 1, image: image},
+            {id: 2, image: imageGal1},
+            {id: 3, image: imageGal2},
+            {id: 4, image: imageGal3},
+            {id: 5, image: imageGal4},
+        ],
+        color: 'Черный',
     },
    
 ]

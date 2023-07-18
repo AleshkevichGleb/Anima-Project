@@ -1,19 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import MyButton from "../../../common/button/MyButton";
 import styles from "./ProductComments.module.css";
-// import { getComments, getCommentsFetch } from "../../../reducers/commentsSlice";
 import { useEffect } from "react";
 import loaderImage from "../../../assets/images/loader-icon.svg";
-import { getComments } from "../../../reducers/commentsSlice";
+import { clearComments, getComments, getCommentsFetch } from "../../../reducers/commentsSlice";
 
 const ProductComments = ({id}) => {
     const dispatch = useDispatch();
     const {error, comments, isLoading} = useSelector(state => state.comments);
     console.log(error, comments, isLoading);
 
+    useEffect(() => {
+        dispatch(clearComments());
+    }, [dispatch]);
+
     const fetchComments = () => {
-        // dispatch(getCommentsFetch(id))
-        dispatch(getComments(id));
+        dispatch(getCommentsFetch(id));
+        // dispatch(getComments(id));
     }
 
     return (
@@ -31,8 +34,8 @@ const ProductComments = ({id}) => {
                             {comments.map(comment => 
                                 <div className={styles.comment} key={comment.id}>
                                     <div className={styles.comment__titleContainer}>
-                                        <span className={styles.comment__name}><b>Имя:</b> {comment.name}</span>
-                                        <span className={styles.comment__email}><b>Почта:</b> {comment.email}</span>
+                                        <span className={styles.comment__name}>{comment.name}</span>
+                                        <span className={styles.comment__email}>{comment.email}</span>
                                     </div>
                                     <span className={styles.comment__comment}>{comment.body}</span>
                                 </div>    
@@ -40,6 +43,7 @@ const ProductComments = ({id}) => {
                         </div>
                 }
             </div>
+            {error && <h4>{error}</h4>}
         </div>
     )
 }

@@ -42,6 +42,60 @@
     font-size: 18px;
 }
 
+.filter {
+    width: 288px;
+    height: 429px;
+    background-color:#F9F9F9;
+}
+
+.priceBlock {
+    display: flex;
+    gap: 5px;
+}
+
+.input {  
+    width: 48%;
+    border: 1px solid black;
+    border-radius: 7px;
+    /* color: #000 !important; */
+}
+
+.input__styles {
+    color:  #000 !important;
+}
+
 .sort {
     margin-bottom: 30px;
+}
+
+.products__block {
+    display: flex;
+    gap: 50px;
+}
+
+.empty {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+}
+.pages {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.page  {
+    font-weight: 700;
+    width: 30px;
+    height: 30px;
+}
+
+.active_page {
+    font-weight: 700;
+    width: 30px;
+    height: 30px;
+    background-color: #2f2e2e;
 }

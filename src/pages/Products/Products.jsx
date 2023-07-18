@@ -7,29 +7,42 @@ import { productState } from "../../data/productState";
 import styles from "./Products.module.css"
 import { Link } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-import { dropProducts, increase_price, setFilter, setSearchValue } from "../../reducers/productsSlice";
+import { setCurrentPage, setSearchValue } from "../../reducers/productsSlice";
 import MySelect from "../../components/MySelect/MySelect";
 import { useProducts } from "../../hooks/useProducts";
 import SortProducts from "./SortProducts/SortProducts";
-import UnsortProducts from "./UnsortedProducts/UnsortedProducts";
+import FilterProducts from "./FilterProducts/FilterProducts";
+import Filter from "./Filter/Filter";
 
 const Products = () => {
-    const {products, searchValue, searchProducts, currentPage, size, sliceProducts} = useSelector(state => state.products);
-    const [filter, setFilter] = useState({sort: '', query: ''});
-    const sortedAndSearchedProducts = useProducts(products, filter.sort, filter.query)
-    console.log(sortedAndSearchedProducts);
     const dispatch = useDispatch();
-    let subArray = [];
-    for(let i = 0; i < Math.ceil(products.length / size); i++)  {
-        subArray[i] = products.slice((i * size), (i * size) + size)
-    }
+    const {products, currentPage, size} = useSelector(state => state.products);
+    const [filter, setFilter] = useState({sort: '', query: '', filter: {}});
+    const FilterAndSearchedProducts = useProducts(products, filter.sort, filter.query, filter.filter)
     
-    let pagesArray = useMemo(() => [...Array(subArray.length).keys()].map(el => el + 1) ,[currentPage])
+    const changeCurrentPage = (e) => {
+        e.preventDefault();
+        dispatch(setCurrentPage(e.target.id))
+        
+    }
+
     useEffect(() => {
+        dispatch(setCurrentPage(1));
         dispatch(setSearchValue(filter))
     }, [filter])
+  
+    let subArray = [];
+    for(let i = 0; i < Math.ceil(FilterAndSearchedProducts.length / size); i++)  {
+        subArray[i] = FilterAndSearchedProducts.slice((i * size), (i * size) + size)
+    }
+    
+    let pagesArray = [...Array(subArray.length).keys()].map(el => el + 1)
 
-    console.log(searchProducts);
+    const handleFilter = (e) => {
+        const {id, value} = e.target;
+        setFilter({...filter, filter: {...filter.filter, [id]: value.replace(/\s/g,"")}})
+    }
+
     return (
         <>
         <UnderHeader/>
@@ -60,14 +73,71 @@ const Products = () => {
                             ]}
                         />
                     </div>
+                    <div className={styles.products__block}>
+                         <div className={styles.filter}>
+                            <div className={styles.priceBlock}>
+                                <MyInput
+                                    id = "startPrice"
+                                    addStyles={styles.input}
+                                    labelStyles={styles.input__styles}
+                                    inputStyles={styles.input__styles}
+                                    placeholder="От"
+                                    value={filter.startPrice}
+                                    onChange={handleFilter}
+                                />
+                                <MyInput
+                                    id = "lastPrice"
+                                    addStyles={styles.input}
+                                    inputStyles={styles.input__styles}
+                                    labelStyles={styles.input__styles}
+                                    placeholder="До"
+                                    value={filter.lastPrice}
+                                    onChange={handleFilter}
+                                />
+                            </div>
+                        </div>
+                        {
+                            !filter.query.length && !Object.keys(filter.filter).length 
+                                ?<SortProducts 
+                                    searchProducts = {FilterAndSearchedProducts}
+                                    pagesArray = {pagesArray}
+                                    subArray = {subArray}
+                                    currentPage = {currentPage}
+                                    dispatch = {dispatch}
+                                />
+                               
+                                :<>
+                                    {
+                                        !subArray.length
+                                        ?   <h3 className={styles.empty}>Ничего не найдено</h3>
+                                        :   <FilterProducts 
+                                                products={FilterAndSearchedProducts}
+                                                subArray = {subArray}
+                                                dispatch = {dispatch}
+                                                currentPage = {currentPage}
+                                                pagesArray={pagesArray}
+                                            /> 
+                                    }
+                                </>
+                        }
+                    </div>
+                    <div className={styles.pages}>
                     {
-                        // searchProducts.length 
-                            <SortProducts searchProducts = {sortedAndSearchedProducts}/>
-                            // : <UnsortProducts products={searchProducts}/> 
-                            
+                        pagesArray.map(page => 
+                            <MyButton 
+                                onClick={changeCurrentPage}
+                                addStyles = {+currentPage === +page ? styles.active_page : styles.page}
+                                key = {page}
+                                id = {page}
+                            >
+                                {page}
+                            </MyButton>
+                        )
                     }
+                    </div>
                 </div>
             </div>
+
         </div>
         </>
     )

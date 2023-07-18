@@ -23,6 +23,10 @@ const productsSlice = createSlice({
         searchProducts: [],
     },
     reducers: {
+        setCurrentPage: (state, action) => {
+            state.currentPage = action.payload;
+        },
+
         decrease_price: (state, action) => {
             const {id} = action.payload;
             const product = findProduct(state, id);
@@ -103,7 +107,7 @@ const productsSlice = createSlice({
                 if(state.filter.sort === 'price') {
                     state.searchProducts = state.products.sort((a,b) => a[state.filter.sort] - b[state.filter.sort])
                 }else if(state.filter.sort === 'default') {
-                    state.searchProducts = [];          
+                    state.searchProducts = state.products.sort((a,b) => a.id - b.id);          
                 } else{
                     state.searchProducts = state.products.sort((a,b) => a[state.filter.sort].localeCompare(b[state.filter.sort]))   
                 }
@@ -111,35 +115,26 @@ const productsSlice = createSlice({
 
             state.searchProducts = newState;
 
-            if(state.filter.query.length) {
-                const words = state.filter.query.split(' ');
-                state.products.forEach(product => {
-                    let found = true;
-                    words.forEach(word => {
-                        if(!product.title.toLowerCase().includes(word.toLowerCase())) {
-                            found = false
-                        }
-                    })
+            // if(state.filter.query.length) {
+            //     const words = state.filter.query.split(' ');
+            //     state.products.forEach(product => {
+            //         let found = true;
+            //         words.forEach(word => {
+            //             if(!product.title.toLowerCase().includes(word.toLowerCase())) {
+            //                 found = false
+            //             }
+            //         })
     
-                    if(found) {
-                        newState.push(product)
-                    }
-                }) 
-            }
+            //         if(found) {
+            //             newState.push(product)
+            //         }
+            //     }) 
+            // }
 
             state.searchProducts = newState;
         },
-
-        dropProducts: (state, action) => {
-            let subArray = [];
-            for(let i = 0; i < Math.ceil(state.products.length / state.size); i++)  {
-                subArray[i] = state.products.slice((i * state.size), (i * state.size) + state.size)
-            }
-            console.log(subArray);
-            state.sliceProducts = subArray;
-        }
     },
 })
 
-export const {setSearchValue, dropProducts, increase_price, decrease_price, remove_from_basket} = productsSlice.actions;
+export const {setCurrentPage, setSearchValue, increase_price, decrease_price, remove_from_basket} = productsSlice.actions;
 export default productsSlice.reducer;

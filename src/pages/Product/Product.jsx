@@ -2,13 +2,11 @@ import styles from "./Product.module.css";
 import React, {useState} from "react";
 import { useSelector } from "react-redux";
 import UnderHeader from "../../common/underHeader/UnderHeader";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Title from "../../common/title/Title";
 import BackLink from "../../common/BackLink/BackLink";
 import CheckMark from "../../components/CheckMark/CheckMark";
 import Slider from "../../components/Slider/Slider";
-import image from "../../assets/images/countertops.jpg";
-import arrowImage from "../../assets/images/arrow.svg"
 import ProductFunctional from "./ProductFunctional/ProductFunctional";
 import ProductComments from "./ProductComments/ProductComments";
 
@@ -44,11 +42,15 @@ const Product = () => {
                                 <img className={styles.bigImage} src={mainImage.src} alt={mainImage.alt} />
                             </div>
                             <Slider addStyles={{dots: styles.addStyleDots, dot: styles.addStyleDot, toShow: toShowSlides, addSlider: styles.slider}}>
-                                <img onClick={handleImage} className={styles.slider__image} src={product.image.src} alt={product.image.alt} />
-                                <img onClick={handleImage} className={styles.slider__image} src={product.image.src} alt={product.image.alt} />
-                                <img onClick={handleImage} className={styles.slider__image} src={product.image.src} alt={product.image.alt} />
-                                <img onClick={handleImage} className={styles.slider__image} src={product.image.src} alt={product.image.alt} />
-                                <img onClick={handleImage} className={styles.slider__image} src={image} alt={product.image.alt} />
+                                {product.gallery.map(image => 
+                                    <img 
+                                        onClick={handleImage} 
+                                        className={styles.slider__image} 
+                                        key = {image.id} 
+                                        src={image.image} 
+                                        alt="" 
+                                    />    
+                                )}
                             </Slider>
                         </div>
                         <ProductFunctional product = {product}/>

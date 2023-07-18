@@ -14,13 +14,27 @@ const Basket = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const [basketPrice, setBasketPrice] = useState(0);
+    const [basketCount, setBaskeCount] = useState(0);
+    let fullCount = 0;
+    let fullPrice = 0;
+
     useEffect(() => {
         const storage = JSON.parse(localStorage.getItem('basket'));
         if(storage !== null && storage.length) {
             setBasket([...storage]);
         }
-        
-    }, [setBasket])
+
+        basket.forEach(product => {
+            fullCount += +product.cartCount;
+            fullPrice += +product.cartPrice;
+        })
+        setBaskeCount(fullCount);
+        setBasketPrice(fullPrice);
+
+    }, [setBasket, dispatch])
+    console.log(fullCount);
+    console.log(basket);
 
     const removeProduct = (e) => {
         const {id} = e.target;
@@ -64,8 +78,8 @@ const Basket = () => {
                             </div>
                         )}  
                         <div className={styles.finalPriceBlock}>
-                            <span>Сумма вашего заказа: <span className={styles.finalPrice}>3323 ₽</span></span>
-                            <span>Количество товаров: <span className={styles.finalPrice}>3</span></span>
+                            <span>Сумма вашего заказа: <span className={styles.finalPrice}>{basketPrice} ₽</span></span>
+                            <span>Количество товаров: <span className={styles.finalPrice}>{basketCount}</span></span>
                             <MyButton 
                                 addStyles={styles.button}
                                 onClick={() => navigate('/form')}

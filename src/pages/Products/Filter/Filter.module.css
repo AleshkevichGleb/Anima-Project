@@ -1,0 +1,21 @@
+.filter {
+    width: 288px;
+    height: 429px;
+    background-color:#F9F9F9;
+}
+
+.priceBlock {
+    display: flex;
+    gap: 5px;
+}
+
+.input {  
+    width: 48%;
+    border: 1px solid black;
+    border-radius: 7px;
+    /* color: #000 !important; */
+}
+
+.input__styles {
+    color:  #000 !important;
+}

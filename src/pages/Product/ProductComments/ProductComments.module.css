@@ -29,24 +29,71 @@
 .comment {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 400px;
-    border: 1px solid black;
+    width: 420px;
+    border: 2px solid rgb(160, 170, 160);
+    padding: 15px 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    gap: 20px;
+    border-radius: 10px;
 }
 
 .comment__titleContainer {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    align-items: center;
 }
 
 .comment__name {
     font-size: 20px;
+    font-weight: 700;
+    text-align: center;
 }
 
 .comment__email {
     font-size: 20px;
+    text-align: center;
 }
 
 .comment__comment  {
+    margin-top: auto;
     font-size: 18px;
+}
+
+@media(max-width: 1310px) {
+    .comments__container{
+        margin: 0 10px;
+    }
+}
+
+@media(max-width: 902px) {
+    .comment{
+        width: 48%;
+    }
+
+    .comment__name {
+        font-size: 18px;
+    }
+    
+    .comment__email {
+        font-size: 18px;
+    }
+
+    .comment__comment  {
+        font-size: 17px;
+    }
+}
+
+
+@media(max-width: 767px) {
+    .comment{
+        width: 100%;
+    }
+
+}
+
+@media(max-width: 320px) {
+    .comments__container {
+        margin: 0 4px;
+    }
 }
