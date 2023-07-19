@@ -6,6 +6,7 @@ import productsSlice from "./productsSlice";
 import basketSlice from "./basketSlice";
 import personSlice from "./personSlice";
 import commentsSlice from "./commentsSlice";
+import fullCartCount from "./fullCartCount";
 
 const saga = createSagaMiddleware();
 
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     basket: basketSlice,
     person: personSlice,
     comments: commentsSlice,
+    count: fullCartCount,
 })
 
 export const store = configureStore({

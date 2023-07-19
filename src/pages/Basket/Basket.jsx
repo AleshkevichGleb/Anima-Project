@@ -7,6 +7,7 @@ import { remove_from_basket } from "../../reducers/productsSlice";
 import EmptyBasket from "./EmptyBasket/EmptyBasket";
 import { Link, useNavigate } from "react-router-dom";
 import MyButton from "../../common/button/MyButton";
+import { calc_cart_count } from "../../reducers/fullCartCount";
 
 
 const Basket = () => {
@@ -16,15 +17,14 @@ const Basket = () => {
 
     const [basketPrice, setBasketPrice] = useState(0);
     const [basketCount, setBaskeCount] = useState(0);
-    let fullCount = 0;
-    let fullPrice = 0;
 
     useEffect(() => {
         const storage = JSON.parse(localStorage.getItem('basket'));
         if(storage !== null && storage.length) {
             setBasket([...storage]);
         }
-
+        let fullCount = 0;
+        let fullPrice = 0;
         basket.forEach(product => {
             fullCount += +product.cartCount;
             fullPrice += +product.cartPrice;
@@ -33,12 +33,13 @@ const Basket = () => {
         setBasketPrice(fullPrice);
 
     }, [setBasket, dispatch])
-    console.log(fullCount);
+    // console.log(fullCount)
     console.log(basket);
 
     const removeProduct = (e) => {
         const {id} = e.target;
         dispatch(remove_from_basket({id: id}));
+        dispatch(calc_cart_count());
     }
 
     return (

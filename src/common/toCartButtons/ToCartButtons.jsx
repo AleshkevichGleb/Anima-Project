@@ -4,6 +4,7 @@ import styles from "./ToCartButtons.module.css";
 import { decrease_price, increase_price } from "../../reducers/productsSlice";
 import plusImage from "../../assets/images/plus.svg";
 import React, { useEffect, useState } from "react";
+import { calc_cart_count } from "../../reducers/fullCartCount";
 
 const ToCartButtons = ({product, addStyles, flag}) => {
     const dispatch = useDispatch();
@@ -24,11 +25,13 @@ const ToCartButtons = ({product, addStyles, flag}) => {
     const increasePrice = (e) => {
         const {id} = e.target;
         dispatch(increase_price({id: id}));
+        dispatch(calc_cart_count());
     }
 
     const decreasePrice = (e) => {
         const {id} = e.target;
         dispatch(decrease_price({id: id}));
+        dispatch(calc_cart_count());
     }
 
     return (

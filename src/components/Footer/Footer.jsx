@@ -61,10 +61,11 @@ const Footer = () => {
                     </div>
                     <div className={styles.footer__formCheckData}>
                         <input 
+                            id = "data"
                             className={styles.checkbox} 
                             type = "checkbox"
                         />
-                        <span className={styles.checkboxText}>Согласен на обработку персональных данных</span>
+                        <label htmlFor="data" className={styles.checkboxText}>Согласен на обработку персональных данных</label>
                     </div>
               </div>
             </form>
