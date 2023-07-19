@@ -37,8 +37,10 @@ const productsSlice = createSlice({
             storage.forEach(el => {
                 if(+el.id === +product.id)
                 {
-                    el.cartCount -= 1;
-                    el.cartPrice -= el.price;
+                    if(+el.cartCount !== 0) {
+                        el.cartCount -= 1;
+                        el.cartPrice -= el.price;
+                    }
                 }
             })
 
@@ -51,7 +53,8 @@ const productsSlice = createSlice({
                 //         return el;
                 //     }
                 // })
-                localStorage.setItem('basket', JSON.stringify([...storage.filter(el => +el.id !== +storage[index].id)]));
+                const id = storage[index].id;
+                localStorage.setItem('basket', JSON.stringify([...storage.filter(el => +el.id !== +id)]));
             }
             else localStorage.setItem('basket', JSON.stringify([...storage]));
         },
