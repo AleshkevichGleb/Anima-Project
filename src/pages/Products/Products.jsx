@@ -3,22 +3,27 @@ import MyButton from "../../common/button/MyButton";
 import MyInput from "../../common/input/MyInput";
 import Title from "../../common/title/Title";
 import UnderHeader from "../../common/underHeader/UnderHeader";
-import { productState } from "../../data/productState";
 import styles from "./Products.module.css"
-import { Link } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { setCurrentPage, setSearchValue } from "../../reducers/productsSlice";
 import MySelect from "../../components/MySelect/MySelect";
 import { useProducts } from "../../hooks/useProducts";
 import SortProducts from "./SortProducts/SortProducts";
 import FilterProducts from "./FilterProducts/FilterProducts";
 import Filter from "./Filter/Filter";
+import { brandProducts, colorsProducts } from "../../data/brandProducts";
 
 const Products = () => {
     const dispatch = useDispatch();
     const {products, currentPage, size} = useSelector(state => state.products);
-    const [filter, setFilter] = useState({sort: '', query: '', filter: {}});
-    const FilterAndSearchedProducts = useProducts(products, filter.sort, filter.query, filter.filter)
+    const [filter, setFilter] = useState({
+        sort: '', 
+        query: '', 
+        price: {}, 
+        brand:{},
+        color: {},
+    });
+    const FilterAndSearchedProducts = useProducts(products, filter.sort, filter.query, filter.price, filter.brand, filter.color)
     
     const changeCurrentPage = (e) => {
         e.preventDefault();
@@ -29,7 +34,7 @@ const Products = () => {
     useEffect(() => {
         dispatch(setCurrentPage(1));
         dispatch(setSearchValue(filter))
-    }, [filter])
+    }, [filter, dispatch])
   
     let subArray = [];
     for(let i = 0; i < Math.ceil(FilterAndSearchedProducts.length / size); i++)  {
@@ -38,9 +43,19 @@ const Products = () => {
     
     let pagesArray = [...Array(subArray.length).keys()].map(el => el + 1)
 
-    const handleFilter = (e) => {
+    const handleFilterPrice = (e) => {
         const {id, value} = e.target;
-        setFilter({...filter, filter: {...filter.filter, [id]: value.replace(/\s/g,"")}})
+        setFilter({...filter, price: {...filter.price, [id]: value.replace(/\s|[a-zA-Zа-яА-Я]/g,"")}})
+    }
+
+    const handleFilterBrand = (e) => {
+        const {id, checked} = e.target;
+        setFilter({...filter, brand: {...filter.brand, [id]: checked}})
+    }
+
+    const handleFilterColor = (e) => {
+        const {id, checked} = e.target;
+        setFilter({...filter, color: {...filter.color, [id]: checked}})
     }
 
     return (
@@ -55,49 +70,77 @@ const Products = () => {
                             title_p1='Изделия из ' 
                             title_p2='натурального камня'
                         />
-                        <input
-                            className={styles.searchInput}
-                            placeholder="Поиск"
-                            value = {filter.query}
-                            onChange={e => setFilter({...filter, query: e.target.value})}
-                        />
-                        <MySelect 
-                            value={filter.sort}
-                            onChange={e => setFilter({...filter, sort: e})}
-                            defaultValue='Сортировка по'
-                            options={[
-                                {value: 'default', name: 'Сортировка по'},
-                                {value: 'type', name: 'Производителю'},
-                                {value: 'title', name: 'Названию'},
-                                {value: 'price', name: 'Цене'}
-                            ]}
-                        />
+                        <div className={styles.sortBlock}>
+                            <input
+                                className={styles.searchInput}
+                                placeholder="Поиск"
+                                value = {filter.query}
+                                onChange={e => setFilter({...filter, query: e.target.value})}
+                            />
+                            <MySelect 
+                                value={filter.sort}
+                                onChange={e => setFilter({...filter, sort: e})}
+                                defaultValue='Сортировка по'
+                                options={[
+                                    {value: 'default', name: 'Сортировка по'},
+                                    {value: 'type', name: 'Производителю'},
+                                    {value: 'title', name: 'Названию'},
+                                    {value: 'price', name: 'Цене'}
+                                ]}
+                            />
+                        </div>
                     </div>
                     <div className={styles.products__block}>
                          <div className={styles.filter}>
-                            <div className={styles.priceBlock}>
-                                <MyInput
+                            <div className={styles.typeBlock}>
+                                <span className={styles.filter__title}>Производитель</span>
+                                {brandProducts.map((type, index) =>
+                                    <div key={type}>
+                                        <input 
+                                            type='checkbox' 
+                                            id = {type}
+                                            onChange={handleFilterBrand}
+                                        />
+                                        <label className={styles.filter__label} htmlFor={type}>{type}</label>
+                                    </div>
+                                )}
+                            </div>
+                            <div className={styles.typeBlock}>
+                                <span className={styles.filter__title}>Цвет</span>
+                                {colorsProducts.map((type, index) =>
+                                    <div key={type}>
+                                        <input 
+                                            type='checkbox' 
+                                            id = {type}
+                                            onChange={handleFilterColor}
+                                        />
+                                        <label className={styles.filter__label} htmlFor={type}>{type}</label>
+                                    </div>
+                                )}
+                            </div>
+                            <div className={styles.filterBlock}>
+                                <span className={styles.filter__title}>Цена</span>
+                                <input
                                     id = "startPrice"
-                                    addStyles={styles.input}
-                                    labelStyles={styles.input__styles}
-                                    inputStyles={styles.input__styles}
+                                    className={styles.input}
                                     placeholder="От"
-                                    value={filter.startPrice}
-                                    onChange={handleFilter}
+                                    value={filter.price.startPrice || ''}
+                                    onChange={handleFilterPrice}
                                 />
-                                <MyInput
+                                <input
                                     id = "lastPrice"
-                                    addStyles={styles.input}
-                                    inputStyles={styles.input__styles}
-                                    labelStyles={styles.input__styles}
+                                    className={styles.input}
                                     placeholder="До"
-                                    value={filter.lastPrice}
-                                    onChange={handleFilter}
+                                    value={filter.price.lastPrice || ''}
+                                    onChange={handleFilterPrice}
                                 />
                             </div>
                         </div>
                         {
-                            !filter.query.length && !Object.keys(filter.filter).length 
+                            !filter.query.length && 
+                            !Object.keys(filter.price).length &&  
+                            !Object.keys(filter.brand).length && 
+                            !Object.keys(filter.color).length
                                 ?<SortProducts 
                                     searchProducts = {FilterAndSearchedProducts}
                                     pagesArray = {pagesArray}
@@ -113,9 +156,7 @@ const Products = () => {
                                         :   <FilterProducts 
                                                 products={FilterAndSearchedProducts}
                                                 subArray = {subArray}
-                                                dispatch = {dispatch}
                                                 currentPage = {currentPage}
-                                                pagesArray={pagesArray}
                                             /> 
                                     }
                                 </>

@@ -5,7 +5,7 @@ import ToCartButtons from "../../../common/toCartButtons/ToCartButtons";
 import { setCurrentPage } from "../../../reducers/productsSlice";
 
 
-const FilterProducts = ({products, subArray, currentPage, dispatch, pagesArray}) => {
+const FilterProducts = ({products, subArray, currentPage}) => {
 
     return (
         <div className={styles.products__block}>

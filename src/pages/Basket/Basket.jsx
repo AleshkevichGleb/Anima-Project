@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import UnderHeader from "../../common/underHeader/UnderHeader";
 import styles from "./Basket.module.css";
 import ToCartButtons from "../../common/toCartButtons/ToCartButtons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { remove_from_basket } from "../../reducers/productsSlice";
 import EmptyBasket from "./EmptyBasket/EmptyBasket";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import { calc_cart_count } from "../../reducers/fullCartCount";
 
 
 const Basket = () => {
+    const {products} = useSelector(state => state.products);
     const [basket, setBasket] = useState([]);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -22,7 +23,12 @@ const Basket = () => {
         const storage = JSON.parse(localStorage.getItem('basket'));
         if(storage !== null && storage.length) {
             setBasket([...storage]);
+        } else {
+            setBasket([]);
         }
+    }, [products]);
+
+    useEffect(() => {
         let fullCount = 0;
         let fullPrice = 0;
         basket.forEach(product => {
@@ -32,9 +38,7 @@ const Basket = () => {
         setBaskeCount(fullCount);
         setBasketPrice(fullPrice);
 
-    }, [setBasket, dispatch])
-    // console.log(fullCount)
-    console.log(basket);
+    }, [setBasket, dispatch, basket])
 
     const removeProduct = (e) => {
         const {id} = e.target;
@@ -65,7 +69,7 @@ const Basket = () => {
                                     </div>
                                 </div>
                                 <div className={styles.product__functional}>
-                                    <ToCartButtons flag={true} addStyles={{button: styles.smallButton, count: styles.cartCount, price: styles.addStylePrice}} product={product}/>
+                                    <ToCartButtons  flag={true} addStyles={{button: styles.smallButton, count: styles.cartCount, price: styles.addStylePrice}} product={product}/>
                                     
                                     <span className={styles.product__price}>{(product.cartPrice).toLocaleString()} ₽</span>
                                     <button  

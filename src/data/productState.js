@@ -25,7 +25,7 @@ export const productState = [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
             {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
-            {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
+            {id: 4, title: "Цвет", text: "Белый"},
         ],
         gallery: [
             {id: 1, image: image},
@@ -34,7 +34,6 @@ export const productState = [
             {id: 4, image: imageGal3},
             {id: 5, image: imageGal4},
         ],
-        color: 'Белый',
     },
     {
         id: 2,
@@ -55,7 +54,7 @@ export const productState = [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
             {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
-            {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
+            {id: 4, title: "Цвет", text: "Черный"},
         ],
         gallery: [
             {id: 1, image: image},
@@ -64,7 +63,6 @@ export const productState = [
             {id: 4, image: imageGal3},
             {id: 5, image: imageGal4},
         ],
-        color: 'Черный',
     },
     {
         id: 3,
@@ -85,7 +83,7 @@ export const productState = [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
             {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
-            {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
+            {id: 4, title: "Цвет", text: "Белый"},
         ],
         gallery: [
             {id: 1, image: image},
@@ -94,7 +92,6 @@ export const productState = [
             {id: 4, image: imageGal3},
             {id: 5, image: imageGal4},
         ],
-        color: 'Белый',
     },
     {
         id: 4,
@@ -115,7 +112,7 @@ export const productState = [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
             {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
-            {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
+            {id: 4, title: "Цвет", text: "Синий"},
         ],
         gallery: [
             {id: 1, image: image},
@@ -124,7 +121,6 @@ export const productState = [
             {id: 4, image: imageGal3},
             {id: 5, image: imageGal4},
         ],
-        color: 'Синий',
     },
 
     {
@@ -146,7 +142,7 @@ export const productState = [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
             {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
-            {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
+            {id: 4, title: "Цвет", text: "Фиолетовый"},
         ],
         gallery: [
             {id: 1, image: image},
@@ -155,7 +151,6 @@ export const productState = [
             {id: 4, image: imageGal3},
             {id: 5, image: imageGal4},
         ],
-        color: 'Фиолетовый',
     },
 
     {
@@ -177,7 +172,7 @@ export const productState = [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
             {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
-            {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
+            {id: 4, title: "Цвет", text: "Белый"},
         ],
         gallery: [
             {id: 1, image: image},
@@ -186,7 +181,6 @@ export const productState = [
             {id: 4, image: imageGal3},
             {id: 5, image: imageGal4},
         ],
-        color: 'Белый',
     },
 
     {
@@ -208,7 +202,7 @@ export const productState = [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
             {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
-            {id: 4, title: "Цвет", text: "Каркасно-щитовая с сотовым наполнителем"},
+            {id: 4, title: "Цвет", text: "Черный"},
         ],
         gallery: [
             {id: 1, image: image},
@@ -217,7 +211,6 @@ export const productState = [
             {id: 4, image: imageGal3},
             {id: 5, image: imageGal4},
         ],
-        color: 'Черный',
     },
    
 ]

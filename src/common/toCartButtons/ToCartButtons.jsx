@@ -3,24 +3,11 @@ import MyButton from "../button/MyButton";
 import styles from "./ToCartButtons.module.css";
 import { decrease_price, increase_price } from "../../reducers/productsSlice";
 import plusImage from "../../assets/images/plus.svg";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { calc_cart_count } from "../../reducers/fullCartCount";
 
 const ToCartButtons = ({product, addStyles, flag}) => {
     const dispatch = useDispatch();
-    const [basketProduct, setBasketProduct] = useState({});
-    // console.log(product);
-    useEffect(() => {
-        let storage = JSON.parse(localStorage.getItem('basket')) || [];
-        if(storage  !== null && storage.length) {
-            storage.forEach(element => {
-                    if(+element.id === +product.id) setBasketProduct({...element})
-            });
-        } else {
-            setBasketProduct({});
-        }
-    }, [dispatch, product, setBasketProduct])
-
 
     const increasePrice = (e) => {
         const {id} = e.target;
@@ -35,27 +22,26 @@ const ToCartButtons = ({product, addStyles, flag}) => {
     }
 
     return (
-        Object.keys(basketProduct).length
+        product.cartCount > 0
         ?   <div className={styles.buttonsContainer}>
-                <span className={addStyles.count}>{basketProduct.cartCount}</span>
+                <span className={addStyles.count}>{product.cartCount}</span>
                 <MyButton 
-                    id = {basketProduct.id} 
+                    id = {product.id} 
                     onClick={decreasePrice} 
                     addStyles={addStyles.button}
                 >
                     —
                 </MyButton>
                 {flag 
-                ?   <span className={`${styles.cartPrice} ${addStyles.price}`}>{(basketProduct.cartCount)}</span>
-                :   <span className={`${styles.cartPrice} ${addStyles.price}`}>{(basketProduct.cartPrice).toLocaleString()} ₽</span>
+                ?   <span className={`${styles.cartPrice} ${addStyles.price}`}>{(product.cartCount)}</span>
+                :   <span className={`${styles.cartPrice} ${addStyles.price}`}>{(product.cartPrice).toLocaleString()} ₽</span>
                 }
                 <MyButton 
-                    id = {basketProduct.id} 
+                    id = {product.id} 
                     onClick={increasePrice} 
                     addStyles={addStyles.button}
                 >
-                    {/* <img className={styles.plusImage} src={plusImage} alt="" /> */}
-                    <span id = {basketProduct.id} className={styles.plusImage}>+</span>
+                    <img id = {product.id} className={styles.plusImage} src={plusImage} alt="" />
                 </MyButton>
             </div>
         :   <MyButton 
