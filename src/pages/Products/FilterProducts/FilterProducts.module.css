@@ -109,10 +109,47 @@
     left: 0px;
 }
 
+@media(max-width: 1167px)  {
+    .products__block {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+}
 
 @media (max-width: 767.98px) {
     .productsTitle {
         display: flex;
         flex-direction: column;
     }
+}
+
+@media(max-width: 666px) {
+
+    .product {
+        width: 47%;
+    }
+
+    .button {
+        width: 100% ;
+    }
+
+    .product__imageBlock {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product__imageBlockNotSale {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media(max-width: 596px) {
+    .product {
+        width: 100%;
+    }
+
 }

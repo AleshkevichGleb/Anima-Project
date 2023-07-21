@@ -44,7 +44,7 @@
 }
 
 .filter {
-    width: 288px;
+    min-width: 288px;
     height: 429px;
     background-color:#F9F9F9;
     padding: 15px 10px;
@@ -119,4 +119,48 @@
     width: 30px;
     height: 30px;
     background-color: #2f2e2e;
+}
+
+
+@media(max-width: 1310px) {
+    .products__container {
+        margin: 0px 10px;
+    }
+
+    
+}
+
+@media(max-width: 1270px) {
+    .products__block {
+        gap: 20px;
+    }
+}
+
+@media(max-width: 1167px) {
+    .products__block {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media(max-width: 785px) {
+    .productsTitle {
+        font-size: 32px;
+        flex-direction: column;
+    }
+}
+
+
+@media(max-width: 506px) {
+    .sortBlock {
+        flex-direction: column;
+    }
+
+    .searchInput { 
+        width: 100%;
+    }
+
+    .productsTitle {
+        font-size: 28px;
+    }
 }

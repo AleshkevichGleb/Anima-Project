@@ -47,7 +47,7 @@ const ToCartButtons = ({product, addStyles, flag}) => {
         :   <MyButton 
                 onClick={increasePrice} 
                 id = {product.id} 
-                addStyles={styles.button}
+                addStyles={`${addStyles.bigButton} ${styles.button}` }
             >
                 В корзину
             </MyButton>

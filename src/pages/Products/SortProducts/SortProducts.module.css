@@ -107,6 +107,11 @@
     left: 0px;
 }
 
+@media(max-width: 1167px) {
+    .products__block {
+        justify-content: center;
+    }
+}
 
 @media (max-width: 767.98px) {
     .productsTitle {

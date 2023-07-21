@@ -32,3 +32,9 @@
 .option {
     font-family: inherit ;
 }
+
+@media(max-width: 506px) {
+   .select {
+        width: 100%;
+    }
+}

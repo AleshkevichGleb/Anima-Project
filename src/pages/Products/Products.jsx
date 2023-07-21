@@ -1,6 +1,5 @@
 import { useDispatch, useSelector} from "react-redux";
 import MyButton from "../../common/button/MyButton";
-import MyInput from "../../common/input/MyInput";
 import Title from "../../common/title/Title";
 import UnderHeader from "../../common/underHeader/UnderHeader";
 import styles from "./Products.module.css"
@@ -11,7 +10,6 @@ import { useProducts } from "../../hooks/useProducts";
 import SortProducts from "./SortProducts/SortProducts";
 import FilterProducts from "./FilterProducts/FilterProducts";
 import Filter from "./Filter/Filter";
-import { brandProducts, colorsProducts } from "../../data/brandProducts";
 
 const Products = () => {
     const dispatch = useDispatch();
@@ -23,6 +21,7 @@ const Products = () => {
         brand:{},
         color: {},
     });
+
     const FilterAndSearchedProducts = useProducts(products, filter.sort, filter.query, filter.price, filter.brand, filter.color)
     
     const changeCurrentPage = (e) => {
@@ -42,21 +41,6 @@ const Products = () => {
     }
     
     let pagesArray = [...Array(subArray.length).keys()].map(el => el + 1)
-
-    const handleFilterPrice = (e) => {
-        const {id, value} = e.target;
-        setFilter({...filter, price: {...filter.price, [id]: value.replace(/\s|[a-zA-Zа-яА-Я]/g,"")}})
-    }
-
-    const handleFilterBrand = (e) => {
-        const {id, checked} = e.target;
-        setFilter({...filter, brand: {...filter.brand, [id]: checked}})
-    }
-
-    const handleFilterColor = (e) => {
-        const {id, checked} = e.target;
-        setFilter({...filter, color: {...filter.color, [id]: checked}})
-    }
 
     return (
         <>
@@ -91,51 +75,7 @@ const Products = () => {
                         </div>
                     </div>
                     <div className={styles.products__block}>
-                         <div className={styles.filter}>
-                            <div className={styles.typeBlock}>
-                                <span className={styles.filter__title}>Производитель</span>
-                                {brandProducts.map((type, index) =>
-                                    <div key={type}>
-                                        <input 
-                                            type='checkbox' 
-                                            id = {type}
-                                            onChange={handleFilterBrand}
-                                        />
-                                        <label className={styles.filter__label} htmlFor={type}>{type}</label>
-                                    </div>
-                                )}
-                            </div>
-                            <div className={styles.typeBlock}>
-                                <span className={styles.filter__title}>Цвет</span>
-                                {colorsProducts.map((type, index) =>
-                                    <div key={type}>
-                                        <input 
-                                            type='checkbox' 
-                                            id = {type}
-                                            onChange={handleFilterColor}
-                                        />
-                                        <label className={styles.filter__label} htmlFor={type}>{type}</label>
-                                    </div>
-                                )}
-                            </div>
-                            <div className={styles.filterBlock}>
-                                <span className={styles.filter__title}>Цена</span>
-                                <input
-                                    id = "startPrice"
-                                    className={styles.input}
-                                    placeholder="От"
-                                    value={filter.price.startPrice || ''}
-                                    onChange={handleFilterPrice}
-                                />
-                                <input
-                                    id = "lastPrice"
-                                    className={styles.input}
-                                    placeholder="До"
-                                    value={filter.price.lastPrice || ''}
-                                    onChange={handleFilterPrice}
-                                />
-                            </div>
-                        </div>
+                        <Filter filter= {filter} setFilter = {setFilter}/>
                         {
                             !filter.query.length && 
                             !Object.keys(filter.price).length &&  

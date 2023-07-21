@@ -18,11 +18,10 @@ const Basket = () => {
 
     const [basketPrice, setBasketPrice] = useState(0);
     const [basketCount, setBaskeCount] = useState(0);
-
     useEffect(() => {
         const storage = JSON.parse(localStorage.getItem('basket'));
         if(storage !== null && storage.length) {
-            setBasket([...storage]);
+            setBasket([...storage].filter(product => product.cartCount > 0));
         } else {
             setBasket([]);
         }

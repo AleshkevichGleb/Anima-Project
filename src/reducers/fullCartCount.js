@@ -9,9 +9,11 @@ const fullCartCount = createSlice({
 
     reducers: {
         calc_cart_count: (state, action) => {
-            let storage = JSON.parse(localStorage.getItem('basket'));
-            const count = storage.reduce((acc, product) => acc + product.cartCount || 0 ,0)
-            state.count = count;
+            let storage = JSON.parse(localStorage.getItem('basket')) || [];
+            if(storage.length) {
+                const count = storage.reduce((acc, product) => acc + product.cartCount || 0 ,0)
+                state.count = count;
+            }
         }
     },
 })

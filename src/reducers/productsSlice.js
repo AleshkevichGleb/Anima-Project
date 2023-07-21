@@ -18,11 +18,22 @@ const productsSlice = createSlice({
         products: productState,
         filter: {sort: '', query: ''},
         currentPage: 1,
-        size: 3,
+        size: 9,
         sliceProducts: [],
         searchProducts: [],
     },
     reducers: {
+        setState: (state, action) => {
+            for(let i = 0; i < state.products.length; i++) {
+                for(let j = 0; j < action.payload.length; j++) {
+                    if(state.products[i].id === action.payload[j].id) {
+                        state.products[i].cartCount = action.payload[j].cartCount
+                        state.products[i].cartPrice = action.payload[j].cartPrice
+                    } 
+                }
+            }
+        },
+
         setCurrentPage: (state, action) => {
             state.currentPage = action.payload;
         },
@@ -32,7 +43,6 @@ const productsSlice = createSlice({
             const product = findProduct(state, id);
             product.cartCount -= 1;
             product.cartPrice -= product.price;
-
             let storage = JSON.parse(localStorage.getItem('basket'));
             storage.forEach(el => {
                 if(+el.id === +product.id)
@@ -46,13 +56,6 @@ const productsSlice = createSlice({
 
             const index = storage.findIndex(el => +el.id === +product.id);
             if(storage[index].cartCount === 0) {
-                // storage = storage.filter(el => {
-                //     console.log(typeof el.id);
-                //     console.log(typeof product.id);
-                //     if(el.id !== product.id){
-                //         return el;
-                //     }
-                // })
                 const id = storage[index].id;
                 localStorage.setItem('basket', JSON.stringify([...storage.filter(el => +el.id !== +id)]));
             }
@@ -89,6 +92,7 @@ const productsSlice = createSlice({
             else {
                 localStorage.setItem('basket', JSON.stringify([product]));
             }
+
         },
 
         remove_from_basket: (state, action) => {
@@ -117,27 +121,9 @@ const productsSlice = createSlice({
             }
 
             state.searchProducts = newState;
-
-            // if(state.filter.query.length) {
-            //     const words = state.filter.query.split(' ');
-            //     state.products.forEach(product => {
-            //         let found = true;
-            //         words.forEach(word => {
-            //             if(!product.title.toLowerCase().includes(word.toLowerCase())) {
-            //                 found = false
-            //             }
-            //         })
-    
-            //         if(found) {
-            //             newState.push(product)
-            //         }
-            //     }) 
-            // }
-
-            state.searchProducts = newState;
         },
     },
 })
 
-export const {setCurrentPage, setSearchValue, increase_price, decrease_price, remove_from_basket} = productsSlice.actions;
+export const {setState, setCurrentPage, setSearchValue, increase_price, decrease_price, remove_from_basket} = productsSlice.actions;
 export default productsSlice.reducer;
