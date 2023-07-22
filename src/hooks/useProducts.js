@@ -12,74 +12,155 @@ export const FilterAndSearchedProducts = (products, sort, price, brand, color, p
             }
         }
 
-        if(Object.keys(brand).length) {
-            let brandArr = [];
-            for(let elem in brand) {
-               if(brand[elem]) brandArr = [...brandArr, elem];
-            }
+        const filter = {brand, color, productMM};
+        let newState = [...products];
 
-            if(brandArr.length) {
-                //сделал не правильно, не додумал как через цикл правильно профильтровать массив  
-
-                const length = brandArr.length;
-                if(length === 3) {
-                    return products
-                } else if(length === 2) {
-                    return [...products].filter(product => product.type === brandArr[0] || product.type === brandArr[1])
-                } else {
-                    return [...products].filter(product => product.type === brandArr[0]);
+        for(let item in filter) {
+            
+            if(item  === 'brand' &&  Object.keys(brand).length) {
+                let brandArr = [];
+                for(let elem in brand) {
+                   if(brand[elem]) brandArr = [...brandArr, elem];
+                }
+    
+                if(brandArr.length) {
+                    //сделал не правильно, не додумал как через цикл правильно профильтровать массив  
+                    console.log(brandArr.length);
+                    console.log(brandArr);
+                    const length = brandArr.length;
+                    if(length === 3) {
+                        newState = [...newState].filter(product => product.type === brandArr[0] || product.type === brandArr[1] || product.type === brandArr[2])
+                    } else if(length === 2) {
+                        newState = [...newState].filter(product => product.type === brandArr[0] || product.type === brandArr[1])
+                    } else if(length === 1){
+                        newState = [...newState].filter(product => product.type === brandArr[0]);
+                    } else {
+                        newState = [...newState].filter(product => product.type === brandArr[0] || product.type === brandArr[1] || product.type === brandArr[2])
+                    }
                 }
             }
-            console.log(products);
 
-        }
-
-        if(Object.keys(color).length) {
-            let colorArr = [];
-            for(let elem in color) {
-               if(color[elem]) colorArr = [...colorArr, elem];
-            }
-
-            console.log(products);
-            if(colorArr.length) {
-                //сделал не правильно, не додумал как через цикл правильно профильтровать массив  
-
-                const length = colorArr.length;
-                
-                if(length === 4) {
-                    return products
-                } else if(length === 3) {
-                    return [...products].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1] || product.specifications.find(el => el.id === 4).text === colorArr[2])
-                } else if(length === 2) { 
-                    return [...products].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1])
-                } else {
-                    return [...products].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0]);
+            if(item  === 'color' && Object.keys(color).length) {
+                let colorArr = [];
+               
+                for(let elem in color) {
+                   if(color[elem]) colorArr = [...colorArr, elem];
                 }
+    
+           
+                if(colorArr.length) {
+                    //сделал не правильно, не додумал как через цикл правильно профильтровать массив  
+    
+                    const length = colorArr.length;
+                    
+                    if(length === 4) {
+                        newState = [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1] || product.specifications.find(el => el.id === 4).text === colorArr[2] ||  product.specifications.find(el => el.id === 4).text === colorArr[3]);
+                    } else if(length === 3) {
+                        newState =  [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1] || product.specifications.find(el => el.id === 4).text === colorArr[2])
+                    } else if(length === 2) { 
+                        newState =  [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1])
+                    } else if(length === 1){
+                        newState =  [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0]);
+                    } 
+                    
+                } else {
+                    newState = [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1] || product.specifications.find(el => el.id === 4).text === colorArr[2] ||  product.specifications.find(el => el.id === 4).text === colorArr[3]);
+                }
+            }
+
+            if(item  === 'productMM' &&  Object.keys(productMM).length) {
+                let mmArr = [];
+                for(let elem in productMM) {
+                    if(productMM[elem]) mmArr = [...mmArr, elem];
+                }
+                if(mmArr.length) {
+
                 
-            }
-
-        }
-        // console.log(productMM);
-        if(Object.keys(productMM).length) {
-            let mmArr = [];
-            for(let elem in productMM) {
-                if(productMM[elem]) mmArr = [...mmArr, elem];
-            }
-
-            const  length = mmArr.length;
-
-            if(length === 3) {
-                return products;
-            } else if(length === 2) {
-                return [...products].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[1] + ' мм');
-            } else if(length === 1){
-                return [...products].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм');
-            } else {
-                return products
+                    const  length = mmArr.length;
+                
+                    if(length === 3) {
+                        newState = [...newState].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[1] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[2] + ' мм');
+                    } else if(length === 2) {
+                        newState = [...newState].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[1] + ' мм');
+                    } else if(length === 1){
+                        newState =  [...newState].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм');
+                    }
+                } else {
+                    newState = [...newState].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[1] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[2] + ' мм');
+                }
             }
         }
+
+        console.log(newState);
         
-        return products;
+        // if(Object.keys(brand).length) {
+        //     let brandArr = [];
+        //     for(let elem in brand) {
+        //        if(brand[elem]) brandArr = [...brandArr, elem];
+        //     }
+
+        //     if(brandArr.length) {
+        //         //сделал не правильно, не додумал как через цикл правильно профильтровать массив  
+
+        //         const length = brandArr.length;
+        //         if(length === 3) {
+        //             return products
+        //         } else if(length === 2) {
+        //             return [...products].filter(product => product.type === brandArr[0] || product.type === brandArr[1])
+        //         } else {
+        //             return [...products].filter(product => product.type === brandArr[0]);
+        //         }
+        //     }
+          
+
+        // }
+
+        // if(Object.keys(color).length) {
+        //     let colorArr = [];
+        //     for(let elem in color) {
+        //        if(color[elem]) colorArr = [...colorArr, elem];
+        //     }
+
+        //     console.log(products);
+        //     if(colorArr.length) {
+        //         //сделал не правильно, не додумал как через цикл правильно профильтровать массив  
+
+        //         const length = colorArr.length;
+                
+        //         if(length === 4) {
+        //             return products
+        //         } else if(length === 3) {
+        //             return [...products].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1] || product.specifications.find(el => el.id === 4).text === colorArr[2])
+        //         } else if(length === 2) { 
+        //             return [...products].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1])
+        //         } else {
+        //             return [...products].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0]);
+        //         }
+                
+        //     }
+
+        // }
+        // // console.log(productMM);
+        // if(Object.keys(productMM).length) {
+        //     let mmArr = [];
+        //     for(let elem in productMM) {
+        //         if(productMM[elem]) mmArr = [...mmArr, elem];
+        //     }
+
+        //     const  length = mmArr.length;
+
+        //     if(length === 3) {
+        //         return products;
+        //     } else if(length === 2) {
+        //         return [...products].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[1] + ' мм');
+        //     } else if(length === 1){
+        //         return [...products].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм');
+        //     } else {
+        //         return products
+        //     }
+        // }
+        
+        return newState;
     }, [products, sort, price, brand, color, productMM])
 
     return sortedProducts;
