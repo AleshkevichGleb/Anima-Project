@@ -13,5 +13,13 @@ productState.forEach(item => {
 })
 const setColors = new Set(colors);
 
+let productsMM = [];
+productState.forEach(item => {
+    productsMM = [...productsMM, item.specifications.find(el => el.id === 2).text.replace(/\D/g, "")];
+})
+
+const setProductsMM = new Set(productsMM);
+
 export const brandProducts = Array.from(set);
 export const colorsProducts = Array.from(setColors);
+export const productsMMProducts = Array.from([...setProductsMM].sort((a, b) => a - b));

@@ -13,6 +13,8 @@ const fullCartCount = createSlice({
             if(storage.length) {
                 const count = storage.reduce((acc, product) => acc + product.cartCount || 0 ,0)
                 state.count = count;
+            } else {
+                state.count = 0;
             }
         }
     },

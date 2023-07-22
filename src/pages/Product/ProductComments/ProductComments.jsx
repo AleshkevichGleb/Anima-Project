@@ -8,7 +8,6 @@ import { clearComments, getComments, getCommentsFetch } from "../../../reducers/
 const ProductComments = ({id}) => {
     const dispatch = useDispatch();
     const {error, comments, isLoading} = useSelector(state => state.comments);
-    console.log(error, comments, isLoading);
 
     useEffect(() => {
         dispatch(clearComments());
@@ -16,7 +15,6 @@ const ProductComments = ({id}) => {
 
     const fetchComments = () => {
         dispatch(getCommentsFetch(id));
-        // dispatch(getComments(id));
     }
 
     return (

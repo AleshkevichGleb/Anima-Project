@@ -1,8 +1,7 @@
 import { useMemo } from "react"
 
-export const FilterAndSearchedProducts = (products, sort, price, brand, color) => {
+export const FilterAndSearchedProducts = (products, sort, price, brand, color, productMM) => {
     const sortedProducts = useMemo(() => {
-    
         if(Object.keys(price).length) {
             if(price.startPrice && price.lastPrice) {
                 return [...products].filter(product => product.price >= +price.startPrice && product.price <= +price.lastPrice)
@@ -46,7 +45,7 @@ export const FilterAndSearchedProducts = (products, sort, price, brand, color) =
                 //сделал не правильно, не додумал как через цикл правильно профильтровать массив  
 
                 const length = colorArr.length;
-                console.log(length);
+                
                 if(length === 4) {
                     return products
                 } else if(length === 3) {
@@ -60,16 +59,35 @@ export const FilterAndSearchedProducts = (products, sort, price, brand, color) =
             }
 
         }
+        // console.log(productMM);
+        if(Object.keys(productMM).length) {
+            let mmArr = [];
+            for(let elem in productMM) {
+                if(productMM[elem]) mmArr = [...mmArr, elem];
+            }
+
+            const  length = mmArr.length;
+
+            if(length === 3) {
+                return products;
+            } else if(length === 2) {
+                return [...products].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[1] + ' мм');
+            } else if(length === 1){
+                return [...products].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм');
+            } else {
+                return products
+            }
+        }
         
         return products;
-    }, [sort, products, price, brand, color])
+    }, [products, sort, price, brand, color, productMM])
 
     return sortedProducts;
 }
 
 
-export const useProducts = (products, sort, query, price, brand, color) => {
-    const sortedProducts = FilterAndSearchedProducts(products, sort, price, brand, color)
+export const useProducts = (products, sort, query, price, brand, color, productMM) => {
+    const sortedProducts = FilterAndSearchedProducts(products, sort, price, brand, color, productMM)
 
     const searchedAndSortedProducts = useMemo(() => {
         if(query.length) {
@@ -92,7 +110,7 @@ export const useProducts = (products, sort, query, price, brand, color) => {
         } 
 
         return sortedProducts
-    },[query, products, sortedProducts])
+    },[query, sortedProducts])
 
     return searchedAndSortedProducts;
 }

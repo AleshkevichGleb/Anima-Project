@@ -6,7 +6,6 @@ import { setCurrentPage } from "../../../reducers/productsSlice";
 
 
 const FilterProducts = ({products, subArray, currentPage}) => {
-
     return (
         <div className={styles.products__block}>
             {

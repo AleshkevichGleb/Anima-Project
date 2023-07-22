@@ -14,7 +14,10 @@ const Footer = () => {
 
     const handlePersonInfo = (event) => {
         const {id, value} = event.target;
-        setPersonInfo({...personInfo, [id]: value})
+        if(id === 'phone') setPersonInfo({...personInfo, [id]: value.replace(/\s|[a-zA-Zа-яА-Я]/g,"")})
+        else {
+            setPersonInfo({...personInfo, [id]: value})
+        }
     }
 
     const sendData =  (event) => {

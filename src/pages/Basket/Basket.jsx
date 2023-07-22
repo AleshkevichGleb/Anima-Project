@@ -36,7 +36,6 @@ const Basket = () => {
         })
         setBaskeCount(fullCount);
         setBasketPrice(fullPrice);
-
     }, [setBasket, dispatch, basket])
 
     const removeProduct = (e) => {

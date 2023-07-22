@@ -18,11 +18,12 @@ const Products = () => {
         sort: '', 
         query: '', 
         price: {}, 
-        brand:{},
+        brand: {},
         color: {},
+        mm: {},      
     });
 
-    const FilterAndSearchedProducts = useProducts(products, filter.sort, filter.query, filter.price, filter.brand, filter.color)
+    const FilterAndSearchedProducts = useProducts(products, filter.sort, filter.query, filter.price, filter.brand, filter.color, filter.mm)
     
     const changeCurrentPage = (e) => {
         e.preventDefault();
@@ -75,12 +76,13 @@ const Products = () => {
                         </div>
                     </div>
                     <div className={styles.products__block}>
-                        <Filter filter= {filter} setFilter = {setFilter}/>
+                        <Filter filter= {filter} setFilter = {setFilter} dispatch = {dispatch}/>
                         {
                             !filter.query.length && 
                             !Object.keys(filter.price).length &&  
                             !Object.keys(filter.brand).length && 
-                            !Object.keys(filter.color).length
+                            !Object.keys(filter.color).length &&
+                            !Object.keys(filter.mm).length
                                 ?<SortProducts 
                                     searchProducts = {FilterAndSearchedProducts}
                                     pagesArray = {pagesArray}
