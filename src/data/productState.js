@@ -611,7 +611,7 @@ export const productState = [
         cartPrice: 0,
         specifications: [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
-            {id: 2, title: "Изделие", text: "37 мм"},
+            {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
             {id: 4, title: "Цвет", text: "Белый"},
         ],
@@ -640,7 +640,7 @@ export const productState = [
         cartPrice: 0,
         specifications: [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
-            {id: 2, title: "Изделие", text: "37 мм"},
+            {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
             {id: 4, title: "Цвет", text: "Синий"},
         ],
@@ -670,7 +670,7 @@ export const productState = [
         cartPrice: 0,
         specifications: [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
-            {id: 2, title: "Изделие", text: "37 мм"},
+            {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
             {id: 4, title: "Цвет", text: "Фиолетовый"},
         ],
@@ -700,7 +700,7 @@ export const productState = [
         cartPrice: 0,
         specifications: [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
-            {id: 2, title: "Изделие", text: "37 мм"},
+            {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
             {id: 4, title: "Цвет", text: "Белый"},
         ],
@@ -730,7 +730,7 @@ export const productState = [
         cartPrice: 0,
         specifications: [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
-            {id: 2, title: "Изделие", text: "37 мм"},
+            {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
             {id: 4, title: "Цвет", text: "Черный"},
         ],
@@ -849,7 +849,7 @@ export const productState = [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
             {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
-            {id: 4, title: "Цвет", text: "Черный"},
+            {id: 4, title: "Цвет", text: "Фиолетовый"},
         ],
         gallery: [
             {id: 1, image: image},
@@ -907,7 +907,7 @@ export const productState = [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
             {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
-            {id: 4, title: "Цвет", text: "Синий"},
+            {id: 4, title: "Цвет", text: "Белый"},
         ],
         gallery: [
             {id: 1, image: image},
@@ -937,7 +937,7 @@ export const productState = [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
             {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
-            {id: 4, title: "Цвет", text: "Фиолетовый"},
+            {id: 4, title: "Цвет", text: "Черный"},
         ],
         gallery: [
             {id: 1, image: image},
@@ -1056,7 +1056,7 @@ export const productState = [
             {id: 1, title: "Вид камня", text: "600x2000, 700x2000, 800x2000, 900x2000 мм"},
             {id: 2, title: "Изделие", text: "38 мм"},
             {id: 3, title: "Месторождение", text: "Возможно изготовление нестандартных размеров (с удорожанием)"},
-            {id: 4, title: "Цвет", text: "Белый"},
+            {id: 4, title: "Цвет", text: "Синий"},
         ],
         gallery: [
             {id: 1, image: image},
