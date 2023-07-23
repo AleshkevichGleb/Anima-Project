@@ -14,13 +14,11 @@ export const FilterAndSearchedProducts = (products, sort, price, brand, color, p
 
         const filter = {price, brand, color, productMM};
         let newState = [...products];
-        // console.log(Object.values(price));
-        // console.log(Object.values(price) === '');
-        console.log(brand);
+        
         for(let item in filter) {
-            console.log(item);
+
             if(item === 'price' &&  Object.keys(filter.price).length) {
-                console.log(123);
+                let priceState = [...newState]
                 if(price.startPrice && price.lastPrice) {
                     newState = [...newState].filter(product => product.price >= +price.startPrice && product.price <= +price.lastPrice)
                 } else if(price.startPrice) {
@@ -28,7 +26,7 @@ export const FilterAndSearchedProducts = (products, sort, price, brand, color, p
                 } else if(price.lastPrice) {
                     newState = [...newState].filter(product => product.price <= +price.lastPrice)
                 } else {
-                    return newState;
+                    newState = priceState;
                 }
             }
             if(item  === 'brand' &&  Object.keys(filter.brand).length) {
@@ -36,22 +34,25 @@ export const FilterAndSearchedProducts = (products, sort, price, brand, color, p
                 for(let elem in brand) {
                    if(brand[elem]) brandArr = [...brandArr, elem];
                 }
-                console.log(brandArr);
                 if(brandArr.length) {
-                    //сделал не правильно, не додумал как через цикл правильно профильтровать массив  
-                    console.log(brandArr.length);
-                    console.log(brandArr);
-                    console.log(newState);
+                    
                     const length = brandArr.length;
-                    if(length === 3) {
-                        newState = [...newState].filter(product => product.type === brandArr[0] || product.type === brandArr[1] || product.type === brandArr[2])
-                    } else if(length === 2) {
-                        newState = [...newState].filter(product => product.type === brandArr[0] || product.type === brandArr[1])
-                    } else if(length === 1){
-                        newState = [...newState].filter(product => product.type === brandArr[0]);
-                    } else {
-                        newState = [...newState].filter(product => product.type === brandArr[0] || product.type === brandArr[1] || product.type === brandArr[2])
+                    let brandFilter = [];
+
+                    for(let i = 0; i < length; i++) {
+                        brandFilter = [...brandFilter, ...newState.filter(product => product.type === brandArr[i])]
                     }
+
+                    newState = brandFilter;
+                    // if(length === 3) {
+                    //     newState = [...newState].filter(product => product.type === brandArr[0] || product.type === brandArr[1] || product.type === brandArr[2])
+                    // } else if(length === 2) {
+                    //     newState = [...newState].filter(product => product.type === brandArr[0] || product.type === brandArr[1])
+                    // } else if(length === 1){
+                    //     newState = [...newState].filter(product => product.type === brandArr[0]);
+                    // } else {
+                    //     newState = [...newState].filter(product => product.type === brandArr[0] || product.type === brandArr[1] || product.type === brandArr[2])
+                    // }
                 }
             }
 
@@ -62,23 +63,26 @@ export const FilterAndSearchedProducts = (products, sort, price, brand, color, p
                    if(color[elem]) colorArr = [...colorArr, elem];
                 }
     
-                console.log(colorArr.length);
+               
                 if(colorArr.length) {
-                    //сделал не правильно, не додумал как через цикл правильно профильтровать массив  
-    
                     const length = colorArr.length;
-                    
-                    if(length === 4) {
-                        newState = [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1] || product.specifications.find(el => el.id === 4).text === colorArr[2] ||  product.specifications.find(el => el.id === 4).text === colorArr[3]);
-                    } else if(length === 3) {
-                        newState =  [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1] || product.specifications.find(el => el.id === 4).text === colorArr[2])
-                    } else if(length === 2) { 
-                        newState =  [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1])
-                    } else if(length === 1){
-                        newState =  [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0]);
-                    } else {
-                        newState = [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1] || product.specifications.find(el => el.id === 4).text === colorArr[2] ||  product.specifications.find(el => el.id === 4).text === colorArr[3]);
+                    let colorFilter = [];
+                  
+                    for(let i = 0; i < length; i++) {
+                        colorFilter = [...colorFilter, ...newState.filter(product => product.specifications.find(el => el.id === 4).text === colorArr[i])];
                     }
+                    newState = colorFilter;
+                    // if(length === 4) {
+                    //     newState = [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1] || product.specifications.find(el => el.id === 4).text === colorArr[2] ||  product.specifications.find(el => el.id === 4).text === colorArr[3]);
+                    // } else if(length === 3) {
+                    //     newState = [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1] || product.specifications.find(el => el.id === 4).text === colorArr[2])
+                    // } else if(length === 2) { 
+                    //     newState = [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1])
+                    // } else if(length === 1){
+                    //     newState = [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0]);
+                    // } else {
+                    //     newState = [...newState].filter(product => product.specifications.find(el => el.id === 4).text === colorArr[0] || product.specifications.find(el => el.id === 4).text === colorArr[1] || product.specifications.find(el => el.id === 4).text === colorArr[2] ||  product.specifications.find(el => el.id === 4).text === colorArr[3]);
+                    // }
 
                     
                 } 
@@ -94,23 +98,28 @@ export const FilterAndSearchedProducts = (products, sort, price, brand, color, p
                     if(productMM[elem]) mmArr = [...mmArr, elem];
                 }
                 if(mmArr.length) {
+                    const length = mmArr.length;
+                    let mmFilter = [];
 
-                    const  length = mmArr.length;
-                
-                    if(length === 3) {
-                        newState = [...newState].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[1] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[2] + ' мм');
-                    } else if(length === 2) {
-                        newState = [...newState].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[1] + ' мм');
-                    } else if(length === 1){
-                        newState =  [...newState].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм');
-                    } else {
-                        newState = [...newState].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[1] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[2] + ' мм');
+                    for(let i = 0; i < length; i++) {
+                        mmFilter = [...mmFilter, ...newState.filter(product => product.specifications.find(el => el.id === 2).text === mmArr[i] + ' мм')];
                     }
+                    
+                    newState = mmFilter
+                    // if(length === 3) {
+                    //     newState = [...newState].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[1] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[2] + ' мм');
+                    // } else if(length === 2) {
+                    //     newState = [...newState].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[1] + ' мм');
+                    // } else if(length === 1){
+                    //     newState =  [...newState].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм');
+                    // } else {
+                    //     newState = [...newState].filter(product => product.specifications.find(el => el.id === 2).text === mmArr[0] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[1] + ' мм' || product.specifications.find(el => el.id === 2).text === mmArr[2] + ' мм');
+                    // }
                 } 
             }
         }
 
-        console.log(newState);
+        // console.log(newState);
         
         // if(Object.keys(brand).length) {
         //     let brandArr = [];
@@ -178,7 +187,6 @@ export const FilterAndSearchedProducts = (products, sort, price, brand, color, p
         //         return products
         //     }
         // }
-        
         return newState;
     }, [products, sort, price, brand, color, productMM])
 

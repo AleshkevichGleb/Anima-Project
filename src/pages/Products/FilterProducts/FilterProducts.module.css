@@ -90,6 +90,9 @@
     border-radius: 0;
 }
 
+.bigButton{
+    width: 100%;
+}
 
 .cartCount {
     background-color: #244837;
@@ -153,3 +156,5 @@
     }
 
 }
+
+

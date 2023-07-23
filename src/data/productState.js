@@ -891,7 +891,7 @@ export const productState = [
     {
         id: 31,
         inStock: false,
-        type: 'Lapki',
+        type: 'Kratki',
         title: 'Каменная ваза из мрамора',
         description: 'Меценат лаореет великая жизнь свершилась, надо вестибюль чистый поставить. Mauris sollicitudin congue nisl, congue pellentesque Fear pellentesque id. ',
         price: 4110,

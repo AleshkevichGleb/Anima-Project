@@ -12,7 +12,7 @@ const SortProducts = ({searchProducts, subArray, pagesArray, currentPage, dispat
             <div className={styles.products__block}>
                 {subArray[currentPage - 1].map(product => 
                     <div className={styles.product} key={product.id}>
-                        <div className={product.isSale ? styles.product__imageBlock : ''}>
+                        <div className={product.isSale ? styles.product__imageBlock : styles.product__imageBlockNotSale}>
                             <img 
                             src={product.image.src} 
                             alt={product.image.alt} 
@@ -36,7 +36,7 @@ const SortProducts = ({searchProducts, subArray, pagesArray, currentPage, dispat
                         <Link to = {`/products/${product.id}`}>
                             <MyButton addStyles={styles.button}>Подробнее</MyButton>
                         </Link>
-                        <ToCartButtons  addStyles={{button: styles.smallButton, count: styles.cartCount}} product={product}/>
+                        <ToCartButtons  addStyles={{bigButton: styles.button, button: styles.smallButton, count: styles.cartCount}} product={product}/>
                     </div>    
                 )}
             </div>
