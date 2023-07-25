@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# Anima
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an online store of stone products.
 
-## Available Scripts
+## Technologies used
 
-In the project directory, you can run:
+* ReactJS
+* CSS3
+* HTML5
+* Redux
 
-### `npm start`
+## Libraries
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* "@reduxjs/toolkit": "^1.9.5",
+* "@testing-library/jest-dom": "^5.16.5",
+* "@testing-library/react": "^13.4.0",
+* "@testing-library/user-event": "^13.5.0",
+* "axios": "^1.4.0",
+* "nuka-carousel": "^6.0.3",
+* "react": "^18.2.0",
+* "react-dom": "^18.2.0",
+* "react-redux": "^8.1.1",
+* "react-router-dom": "^6.13.0",
+* "react-scripts": "5.0.1",
+* "redux": "^4.2.1",
+* "redux-saga": "^1.2.3",
+* "sass": "^1.63.6",
+* "web-vitals": "^2.1.4"
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Structure of the project
 
-### `npm test`
+In the src folder you will find the entire structure of the project, then the paths will be indicated relative to this folder. 
+* The "assets" folder contains fonts and pictures.
+* The "common" folder contains small components that are reused inside other components (for example, a button or a title).
+* The "components" folder contains all the components of the project.
+* The "data" folder contains all the data that is used in the project (some imitation of the back)
+* The "hooks" folder contains custom hooks.
+* The "pages" folder contains project pages, inside which components from the "components" and "common" folders are already called
+* The "reducers" folder contains the store.js, which combines slices (reduxjs/toolkit) for working with data and queries
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Outside the folders are "index.js" (input point to the project) and App.js, which is called inside index.js and calls some code(components) inside itself
 
-### `npm run build`
+## About code
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The project is written using ReactJS technology. 
+The BrowserRouter (npm install react-router-dom) is used to navigate through the pages.
+The statemanager is Redux(npm -i redux), data is entered into slices - createSlice (npm -i @reduxjs/toolkit), redux-saga (npm -i redux-saga) is used to work with queries.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Launch
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**1. Clone the repository to your PC:**
+### git clone https://github.com/AleshkevichGleb/Anima-Project.git
+&nbsp;
 
-### `npm run eject`
+**2. Go into the project:**
+### cd Anima
+&nbsp;
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**3. Сonnect all dependencies:**
+### npm install
+&nbsp;
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**4. Run project:**
+### npm start
+&nbsp;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Pages
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* Home: 
+![image](https://github.com/AleshkevichGleb/Anima-Project/assets/122697274/db5ac9e6-d82d-4ee6-a8e1-9f346b671ddb)
 
-## Learn More
+* Products:
+![image](https://github.com/AleshkevichGleb/Anima-Project/assets/122697274/bd1e1bbe-c6c1-418d-9c82-c49c6b0dd2cb)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Product (Product/id-product): 
+![image](https://github.com/AleshkevichGleb/Anima-Project/assets/122697274/faf2186e-2ce3-45e9-8bca-ff5db686a840)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Basket
+![image](https://github.com/AleshkevichGleb/Anima-Project/assets/122697274/1e8dc171-a690-4b7b-a5e4-83902e898d03)
 
-### Code Splitting
+* Order: 
+![image](https://github.com/AleshkevichGleb/Anima-Project/assets/122697274/52c452e2-6333-4993-86c7-c03abca36817)
+![image](https://github.com/AleshkevichGleb/Anima-Project/assets/122697274/d0926ea1-b83e-4897-a2db-0315893b3e90)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* FAQ
+![image](https://github.com/AleshkevichGleb/Anima-Project/assets/122697274/d84dd9b3-ddec-427f-9c8a-bfb3dc248bf8)
 
-### Analyzing the Bundle Size
+* Error (invalid url)
+![image](https://github.com/AleshkevichGleb/Anima-Project/assets/122697274/56420b31-3d30-4aeb-9f49-043b9828e104)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
