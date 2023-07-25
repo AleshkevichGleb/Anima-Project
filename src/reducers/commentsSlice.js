@@ -17,13 +17,11 @@ const commentsSlice = createSlice({
 
         getCommentsSuccess: (state, action) => {
             state.isLoading = false;
-            console.log(action.payload);
             state.comments = action.payload;
         },
 
         getCommentsFailed: (state, action) => {
             state.isLoading = false;
-            console.log(action.payload);
             state.error = action.payload
         },
 

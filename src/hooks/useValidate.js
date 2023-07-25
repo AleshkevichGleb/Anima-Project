@@ -33,7 +33,7 @@ export const useValidate = () => {
             }
 
             case 'city': {
-                if(!/^[A-Z]{2,20}$/i.test(value)) {
+                if(!/^[A-Zа-я]{2,20}$/i.test(value)) {
                     setError({...error, city: 'Название города должно содержать только буквы'})
                 } else {
                     setError({...error, city: ''})

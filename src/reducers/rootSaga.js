@@ -40,10 +40,8 @@ function* workGetCommentsFetch(action) {
             fetch(`https://jsonplaceholder.typicode.com/posts/${action.payload}/comments`)
         )
         const data = yield response.json();
-        yield console.log(data);
         yield put(getCommentsSuccess(data))
     } catch(error) {
-        yield console.log(error.message);
         yield put(getCommentsFailed(error.message));
     }
 }
