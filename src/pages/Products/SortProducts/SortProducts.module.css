@@ -22,6 +22,8 @@
 
 .product__imageBlock {
     position: relative;
+    width: 247px;
+    margin: 0 auto;
 }
 
 .product__imageBlock::after {

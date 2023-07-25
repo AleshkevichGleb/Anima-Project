@@ -9,3 +9,11 @@
     color:#282A30;
     /* font-size: 21px; */
 }
+
+.image {
+    transition: .3s linear;
+}
+
+.arrow:hover .image {
+    transform: translate(15px, 0);
+}

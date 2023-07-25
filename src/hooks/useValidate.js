@@ -7,7 +7,7 @@ export const useValidate = () => {
         switch(name) {
             case "name": {
                 if(!/^[a-zA-Za-яА-Я]{2,16}$/.test(value)) {
-                    setError({...error, name: 'Enter a valid name'})
+                    setError({...error, name: 'Введите ваше настоящие имя'})
                 } else {
                     setError({...error, name: ''});
                 }
@@ -16,7 +16,7 @@ export const useValidate = () => {
 
             case 'phone': {
                 if(!/^(\+?375|80)\(?(29|25|44|33)\)?(\d{3})(\d{2})(\d{2})$/.test(value)) {
-                    setError({...error, phone: 'Enter a valid phone number'})
+                    setError({...error, phone: 'Введите правильно номер телефона, напр.: +375(29)2013212 '})
                 } else {
                     setError({...error, phone: ''})
                 }
@@ -34,7 +34,7 @@ export const useValidate = () => {
 
             case 'city': {
                 if(!/^[A-Z]{2,20}$/i.test(value)) {
-                    setError({...error, city: 'Enter a valid phone number'})
+                    setError({...error, city: 'Название города должно содержать только буквы'})
                 } else {
                     setError({...error, city: ''})
                 }
@@ -42,8 +42,8 @@ export const useValidate = () => {
             }
             
             case 'street': {
-                if(!/^[a-zA-Za-яА-Я]{5,25}$/.test(value)) {
-                    setError({...error, street: 'Enter a valid street'})
+                if(!/^[a-zA-Za-яА-Я]{4,25}$/.test(value)) {
+                    setError({...error, street: 'Название улицы должно содержать только буквы'})
                 } else {
                     setError({...error, street: ''})
                 }
@@ -52,7 +52,7 @@ export const useValidate = () => {
 
             case 'house': {
                 if(!/^[0-9]{0,3}\s?[к|К|/]?\s?[0-9]{1}$/.test(value)) {
-                    setError({...error, house: 'Enter a valid number of house'})
+                    setError({...error, house: 'Номер дома должен содержать только цифры или "/"'})
                 } else {
                     setError({...error, house: ''})
                 }
@@ -61,7 +61,7 @@ export const useValidate = () => {
 
             case 'flat': {
                 if(!/^[0-9 /]{0,4}$/.test(value)) {
-                    setError({...error, flat: 'Введите корректный номер квартиры'})
+                    setError({...error, flat: 'Номер квартиры должен содержать только цифры'})
                 } else {
                     setError({...error, flat: ''})
                 }

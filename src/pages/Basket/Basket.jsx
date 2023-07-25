@@ -5,7 +5,7 @@ import ToCartButtons from "../../common/toCartButtons/ToCartButtons";
 import { useDispatch, useSelector } from "react-redux";
 import { remove_from_basket } from "../../reducers/productsSlice";
 import EmptyBasket from "./EmptyBasket/EmptyBasket";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MyButton from "../../common/button/MyButton";
 import { calc_cart_count } from "../../reducers/fullCartCount";
 
@@ -85,9 +85,9 @@ const Basket = () => {
                             <span>Количество товаров: <span className={styles.finalPrice}>{basketCount}</span></span>
                             <MyButton 
                                 addStyles={styles.button}
-                                onClick={() => navigate('/form')}
-                                >
-                                    Оформить заказ
+                                onClick={() => navigate('/order')}
+                            >
+                                Оформить заказ
                             </MyButton>
                         </div>
                       </div>

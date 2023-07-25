@@ -24,7 +24,7 @@ const FooterMenu = () => {
                 </div>
                 <div className={styles.images}>
                     {footerImages.map(image => 
-                        <a href = {image.url} key = {image.id} className={styles.image}>
+                        <a target="_blank" href = {image.url} key = {image.id} className={styles.image}>
                             <img src={image.img} alt="image" />  
                         </a>  
                     )}

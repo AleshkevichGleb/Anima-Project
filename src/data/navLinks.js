@@ -2,7 +2,7 @@ import Basket from "../pages/Basket/Basket";
 import ControlData from "../pages/ControlData/ControlData";
 import Error from "../pages/Error/Error";
 import FAQPage from "../pages/FAQ/FAQPage";
-import FormComponent from "../pages/Form/FormComponent";
+import FormComponent from "../pages/FormComponent/FormComponent";
 import Home from "../pages/Home/Home";
 import Product from "../pages/Product/Product";
 import Products from "../pages/Products/Products";
@@ -21,8 +21,7 @@ export const routes = [
     {path:'/products/:id', element: Product,},
     {path:'/basket', element: Basket,},
     {path:'/FAQ', element: FAQPage,},
-    {path:'/FAQ', element: FAQPage,},
-    {path:'/form', element: FormComponent,},
+    {path:'/order', element: FormComponent,},
     {path:'/data', element: ControlData,},
     {path:'*', element: Error,},
 ]

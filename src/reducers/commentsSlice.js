@@ -1,11 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
-
-export const getComments = createAsyncThunk('comments/getComments',
-    async (id) => {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`);
-        return await response.json();
-    }) 
+import {createSlice } from "@reduxjs/toolkit";
 
 const commentsSlice = createSlice({
     name: 'comments',
@@ -39,19 +32,7 @@ const commentsSlice = createSlice({
         }
     },
 
-    extraReducers(builder) {
-        builder.addCase(getComments.pending, (state, action) => {
-            state.error = '';
-            state.isLoading = true;
-        })
-        builder.addCase(getComments.fulfilled, (state, action) => {
-            state.comments = action.payload;
-            state.isLoading = false;
-        })
-        builder.addCase(getComments.rejected, (state, action) => {
-            state.error = action.payload;
-        })
-    },
+   
 
 })
 

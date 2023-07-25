@@ -7,7 +7,7 @@ const Inscriprion = ({text, src, url = '/', addStyles}) => {
             <div className={`${styles.arrow} ${addStyles}`}>
                 <span className={styles.arrow__text}>{text}</span>
                 {src && 
-                    <img src = {src} alt = ""/>
+                    <img className={styles.image} src = {src} alt = ""/>
                 }
             </div>
         </Link>

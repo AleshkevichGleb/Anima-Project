@@ -12,6 +12,8 @@ import { createPortal } from "react-dom"
 import CheckDataPopUp from "./CheckDataPopUp/CheckDataPopUp"
 import sendDataImg from "../../assets/images/sendData.svg";
 import errorSendDataImg from "../../assets/images/errorSendData.png";
+import { clear_basket } from "../../reducers/productsSlice"
+import { calc_cart_count } from "../../reducers/fullCartCount"
 
 
 const FormComponent = () => {
@@ -20,6 +22,8 @@ const FormComponent = () => {
     const {validate, error} = useValidate();
     const [isDisabled, setIsDisabled] = useState(true);
     const [isShow, setIsShow] = useState(false);
+
+
 
     useEffect(() => {
         const disabled = Object.values(error).find(el => el !== '') || 
@@ -37,11 +41,13 @@ const FormComponent = () => {
         }))
     }
 
-    const sendData = async(e) => {
+    const sendData = (e) => {
         e.preventDefault();
         setIsShow(true);
         if(!isDisabled)  {
             console.log(personData);
+            dispatch(clear_basket())
+            dispatch(calc_cart_count())
         }
     }
 
@@ -50,8 +56,22 @@ const FormComponent = () => {
             {
                 isShow && createPortal(
                     isDisabled
-                    ? <CheckDataPopUp setIsShow={setIsShow} img = {errorSendDataImg} title = 'Ошибка' text = 'Проверьте поля на заполненность правильность ввода'/>
-                    : <CheckDataPopUp setIsShow={setIsShow} img = {sendDataImg} title = 'Ожидайте' text = 'Ваш заказ отправлен на обработу'/>
+                    ? <CheckDataPopUp 
+                        isDisabled={isDisabled}
+                        dispatch = {dispatch}
+                        setIsShow={setIsShow} 
+                        img = {errorSendDataImg} 
+                        title = 'Ошибка' 
+                        text = 'Проверьте поля на заполненность правильность ввода'
+                     />
+                    : <CheckDataPopUp 
+                        isDisabled={isDisabled}
+                        dispatch = {dispatch}
+                        setIsShow={setIsShow} 
+                        img = {sendDataImg} 
+                        title = 'Ожидайте' 
+                        text = 'Ваш заказ отправлен на обработу'
+                     />
                 , document.body)
             }
             <UnderHeader/>
@@ -82,12 +102,11 @@ const FormComponent = () => {
                                 id = "phone"
                                 placeholder='Ваш телефон*'
                             />  
-                            {error && <span className={styles.phone}>{error.phone}</span>}
+                            {error && <span className={styles.error}>{error.phone}</span>}
                         </div>
                         
                         <div className={styles.form__inputBlockBig}>
                             <MyInput 
-                                // addStyles={styles.input__blockLong} 
                                 labelStyles={styles.label} 
                                 inputStyles={styles.input} 
                                 value = {personData.email}

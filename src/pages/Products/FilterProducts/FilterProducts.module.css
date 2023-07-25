@@ -23,6 +23,8 @@
 
 .product__imageBlock {
     position: relative;
+    width: 247px;
+    margin: 0 auto;
 }
 
 .product__imageBlock::after {
@@ -70,6 +72,7 @@
 }
 
 .product__beforePrice {
+    width: 247px;
     font-size: 15px;
     color: #949981;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

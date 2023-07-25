@@ -1,0 +1,31 @@
+.arrow__container { 
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #28553F;
+    position: fixed;
+    z-index: 1;
+    bottom: 15px;
+    right: 10px;
+    display: none;
+
+    .arrow {
+        width: 25px;
+        height: 25px;
+        border: 3px solid #fff;
+        transform: rotate(45deg);
+        border-bottom: none;
+        border-right: none;
+        position: absolute;
+        top: 40%;
+    }
+}
+
+@media(max-width: 883px) {
+    .arrow__container {
+        display: flex;
+    }
+}

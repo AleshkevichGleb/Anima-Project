@@ -17,7 +17,8 @@ const personSlice = createSlice({
             const {id, value, checked} = action.payload;
             if(id === 'agreement') state[id] = checked;
             else state[id] = value;
-        }
+        },
+
     },
 })
 

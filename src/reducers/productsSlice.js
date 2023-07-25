@@ -122,8 +122,18 @@ const productsSlice = createSlice({
 
             state.searchProducts = newState;
         },
+
+        clear_basket: (state) => {
+            state.products.forEach(product => {
+                if(product.cartCount > 0) {
+                    product.cartCount = 0;
+                    product.cartPrice = 0;
+                }
+            })
+            localStorage.setItem('basket', JSON.stringify([]));
+        },
     },
 })
 
-export const {setState, setCurrentPage, setSearchValue, increase_price, decrease_price, remove_from_basket} = productsSlice.actions;
+export const {setState, setCurrentPage, setSearchValue, increase_price, decrease_price, remove_from_basket, clear_basket} = productsSlice.actions;
 export default productsSlice.reducer;
