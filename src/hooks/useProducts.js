@@ -2,15 +2,6 @@ import { useMemo } from "react"
 
 export const FilterAndSearchedProducts = (products, sort, price, brand, color, productMM) => {
     const sortedProducts = useMemo(() => {
-        // if(Object.keys(price).length) {
-        //     if(price.startPrice && price.lastPrice) {
-        //         return [...products].filter(product => product.price >= +price.startPrice && product.price <= +price.lastPrice)
-        //     } else if(price.startPrice) {
-        //         return [...products].filter(product => product.price >= +price.startPrice)
-        //     } else if(price.lastPrice) {
-        //         return [...products].filter(product => product.price <= +price.lastPrice)
-        //     }
-        // }
 
         const filter = {price, brand, color, productMM};
         let newState = [...products];

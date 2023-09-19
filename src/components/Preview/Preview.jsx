@@ -33,7 +33,7 @@ const Prewiew = () => {
                                 <Link to = '/products'>
                                     <MyButton addStyles={styles.button}>СМОТРЕТЬ</MyButton>
                                 </Link>
-                                <MyButton onClick={handleScroll} addStyles={styles.button_black}>СВЯЗАТЬ С НАМИ</MyButton>
+                                <MyButton onClick={handleScroll} addStyles={styles.button_black}>СВЯЗАТЬСЯ С НАМИ</MyButton>
                             </div>
                         </div>
                     </div>

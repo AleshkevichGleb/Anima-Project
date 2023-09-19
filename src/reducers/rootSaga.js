@@ -28,14 +28,13 @@ function* workGetWeatherFetch() {
             yield put(getWeatherSuccess(data));
             
         } catch(error) {
-            console.log(error);
             yield put(getWeatherFailed(error.message))
         }
     }
 }
 
 function* workGetCommentsFetch(action) {
-    try{
+    try{    
         const response = yield call(() => 
             fetch(`https://jsonplaceholder.typicode.com/posts/${action.payload}/comments`)
         )
