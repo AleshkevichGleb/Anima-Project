@@ -64,7 +64,7 @@ The statemanager is Redux(npm -i redux), data is entered into slices - createSli
 ### npm start
 &nbsp;
 
-###link: https://anima-fc099.firebaseapp.com
+### link: https://anima-fc099.firebaseapp.com
 
 ## Pages
 
